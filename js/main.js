@@ -149,6 +149,12 @@
           scrollTrigger: { trigger: ev, start: 'top 78%', once: true } });
       });
 
+      /* groom & bride portraits */
+      gsap.from('.portrait', { opacity: 0, y: 46, duration: 1, stagger: 0.25, ease: 'power3.out', clearProps: 'transform',
+        scrollTrigger: { trigger: '.portrait-row', start: 'top 82%', once: true } });
+      gsap.from('.portrait-amp', { opacity: 0, scale: 0.6, duration: 0.9, delay: 0.2, ease: 'power2.out',
+        scrollTrigger: { trigger: '.portrait-row', start: 'top 80%', once: true } });
+
       gsap.utils.toArray('.tl-item').forEach((item) => {
         gsap.to(item, {
           opacity: 1, y: 0, duration: 1, ease: 'power3.out',

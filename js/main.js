@@ -20,6 +20,7 @@
   function endIntro() {
     if (introScreen.classList.contains('fade-out')) return;
     introScreen.classList.add('fade-out');
+    startMusic();
     document.body.style.overflow = '';
     gsap.to(site, { opacity: 1, duration: 1.4, ease: 'power2.out' });
     setTimeout(() => introScreen.remove(), 1400);
@@ -36,6 +37,7 @@
   function startIntro() {
     if (started) return; started = true;
     playBtn.classList.add('hide');
+    startMusic();
     introVideo.play().catch(endIntro);
     setTimeout(() => { if (!introScreen.classList.contains('fade-out') && introVideo.currentTime < 0.05) endIntro(); }, 4500); /* never started */
     setTimeout(endIntro, 14000);                                                                                              /* hard safety */
@@ -347,6 +349,33 @@
         .catch(() => showToast('Could not copy — please select manually'));
     }
     window.copyAddress = copyAddress;
+
+    /* ================= BACKGROUND MUSIC (same track as the Jishnu & Vibha site) ================= */
+    const player = document.getElementById('player');
+    const music = document.getElementById('bg-music');
+    const iconPlay = document.getElementById('icon-play');
+    const iconPause = document.getElementById('icon-pause');
+    let playing = false, resumeAfterHide = false;
+    function setPlaying(on) {
+      playing = on;
+      player.classList.toggle('playing', on);
+      player.setAttribute('aria-pressed', on ? 'true' : 'false');
+      player.setAttribute('aria-label', on ? 'Pause music' : 'Play music');
+      iconPlay.style.display = on ? 'none' : 'block'; iconPause.style.display = on ? 'block' : 'none';
+    }
+    function startMusic() {
+      if (playing || !music) return;
+      music.play().then(() => setPlaying(true)).catch(() => { });   /* blocked without a tap: the player button stays available */
+    }
+    player.addEventListener('click', () => {
+      if (!playing) music.play().then(() => setPlaying(true)).catch(() => showToast('Could not play the music'));
+      else { music.pause(); setPlaying(false); }
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && playing) { music.pause(); resumeAfterHide = true; }
+      else if (!document.hidden && resumeAfterHide) { resumeAfterHide = false; music.play().catch(() => setPlaying(false)); }
+    });
+
 
     /* ================= LIGHTBOX (event illustrations + couple photographs) ================= */
     const lightbox = document.getElementById('lightbox');

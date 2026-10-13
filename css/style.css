@@ -1676,3 +1676,12 @@
     .footer-content .f-divider { display: block; width: min(220px, 60vw); height: auto; margin: clamp(28px, 5vw, 40px) auto; }
     .footer-content .fnames { font-size: clamp(42px, 8vw, 72px); line-height: 1.15; color: var(--soft-gold); text-shadow: 0 4px 24px rgba(0, 0, 0, .5), 0 0 30px rgba(233, 214, 166, .3); }
     .footer-content .fdate { margin-top: 14px; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: #E3D3AE; }
+
+
+    /* ===================== FLOATING MUSIC PLAYER ===================== */
+    #player { position: fixed; bottom: max(24px, env(safe-area-inset-bottom)); left: max(20px, env(safe-area-inset-left)); z-index: 50; width: 52px; height: 52px; border-radius: 50%; background: var(--warm-white); border: 1px solid var(--glass-border); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; cursor: pointer; touch-action: manipulation; }
+    #player svg { width: 20px; height: 20px; stroke: var(--olive-dark); fill: none; }
+    #player:focus-visible { outline: 3px solid var(--champagne-2); outline-offset: 3px; }
+    #player.playing { animation: pulseplayer 2.4s ease-in-out infinite; }
+    @keyframes pulseplayer { 0%, 100% { box-shadow: 0 0 0 0 rgba(201, 165, 92, .35); } 50% { box-shadow: 0 0 0 10px rgba(201, 165, 92, 0); } }
+    @media (prefers-reduced-motion: reduce) { #player.playing { animation: none; } }

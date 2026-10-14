@@ -27,10 +27,32 @@
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='%23FFF9F0' stroke='%23B89558'%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(60 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(120 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(180 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(240 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(300 20 20)'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='3' fill='%23B89558'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
-  <noscript><style>#intro-screen{display:none!important}#site{opacity:1!important}.hero-names .char,.tl-item,.photo-card{opacity:1!important;transform:none!important}</style></noscript>
+  <script>document.documentElement.classList.add('js')</script>
+  <noscript><style>#intro-screen{display:none!important}#site{opacity:1!important}.hero-names .char,.photo-card{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
 <body>
+
+  <!-- decorative SVG sprite: oil lamp, jasmine garland, corner florals, lotus -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="dg-brass" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#7F5A22"/><stop offset=".3" stop-color="#E4BE68"/><stop offset=".5" stop-color="#F8E6AC"/><stop offset=".72" stop-color="#C79A45"/><stop offset="1" stop-color="#76521E"/></linearGradient>
+<linearGradient id="dg-flame" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#FFF1BE"/><stop offset="1" stop-color="#FFB547"/></linearGradient>
+<symbol id="dj" viewBox="0 0 40 40"><g fill="#FFFDF6" stroke="#B8934A" stroke-width=".9"><ellipse cx="20" cy="10.5" rx="4.4" ry="9"/><ellipse cx="20" cy="10.5" rx="4.4" ry="9" transform="rotate(72 20 20)"/><ellipse cx="20" cy="10.5" rx="4.4" ry="9" transform="rotate(144 20 20)"/><ellipse cx="20" cy="10.5" rx="4.4" ry="9" transform="rotate(216 20 20)"/><ellipse cx="20" cy="10.5" rx="4.4" ry="9" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3" fill="#D9A93E"/></symbol>
+<symbol id="deco-lamp" viewBox="0 0 80 160">
+ <path d="M40 4C48 15 50 24 40 35C30 24 32 15 40 4Z" fill="url(#dg-flame)"/><path d="M40 14C43.500 20 43.500 25 40 30C36.500 25 36.500 20 40 14Z" fill="#FFF7DA"/>
+ <path d="M15 28C19 33 19 38 15 43C11 38 11 33 15 28Z" fill="#FFCE70" opacity=".92"/><path d="M65 28C69 33 69 38 65 43C61 38 61 33 65 28Z" fill="#FFCE70" opacity=".92"/>
+ <path d="M7 47Q40 74 73 47L67 41H13Z" fill="url(#dg-brass)"/><ellipse cx="40" cy="41" rx="27" ry="4" fill="#EBC972"/><ellipse cx="40" cy="41" rx="21" ry="2.4" fill="#8A6325"/>
+ <path d="M35 64H45L47.500 120H32.500Z" fill="url(#dg-brass)"/>
+ <ellipse cx="40" cy="70" rx="11" ry="3.600" fill="#E2BC62"/><ellipse cx="40" cy="88" rx="9" ry="3.200" fill="#E2BC62"/><ellipse cx="40" cy="106" rx="10" ry="3.400" fill="#E2BC62"/>
+ <path d="M12 153Q40 108 68 153Z" fill="url(#dg-brass)"/><ellipse cx="40" cy="154" rx="30" ry="5" fill="#8E682A"/><ellipse cx="40" cy="152" rx="26" ry="3" fill="#D8B259"/>
+</symbol>
+<symbol id="deco-lotus" viewBox="0 0 80 44"><g fill="#FFF8E6" stroke="#B8934A" stroke-width=".9" stroke-linejoin="round">
+ <path d="M40 38C24 40 9 34 1 23C16 22 33 27 40 38Z"/><path d="M40 38C56 40 71 34 79 23C64 22 47 27 40 38Z"/>
+ <path d="M40 38C27 36 17 28 13 15C26 17 36 26 40 38Z"/><path d="M40 38C53 36 63 28 67 15C54 17 44 26 40 38Z"/>
+ <path d="M40 4C47 14 47 28 40 38C33 28 33 14 40 4Z" fill="#FDF0CC"/></g>
+ <path d="M18 41.500H62" stroke="#B8934A" stroke-width=".9" stroke-linecap="round"/></symbol>
+<symbol id="deco-cornerline" viewBox="0 0 40 40" fill="none" stroke="#B8934A" stroke-linecap="round"><path d="M3 37V13Q3 3 13 3H37" stroke-width="1.2"/><path d="M9 29V16Q9 9 16 9H29" stroke-width=".8" opacity=".7"/><path d="M3 3 7.500 8" stroke-width="0"/><path d="M13 13l3 3-3 3-3-3z" fill="#D9B05A" stroke="none"/></symbol>
+<symbol id="deco-garland" viewBox="-20 -20 640 190"><path d="M0 0 Q300 190 600 0" fill="none" stroke="#B8934A" stroke-width="1.3" opacity=".8"/><ellipse cx="4.0" cy="7.0" rx="5.5" ry="2.1" transform="rotate(87 4.0 7.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="-4.0" cy="7.0" rx="5.5" ry="2.1" transform="rotate(-23 -4.0 7.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="54.0" cy="36.0" rx="5.5" ry="2.1" transform="rotate(83 54.0 36.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="46.0" cy="36.0" rx="5.5" ry="2.1" transform="rotate(-27 46.0 36.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="104.0" cy="59.8" rx="5.5" ry="2.1" transform="rotate(78 104.0 59.8)" fill="#8E9C63" opacity=".85"/><ellipse cx="96.0" cy="59.8" rx="5.5" ry="2.1" transform="rotate(-32 96.0 59.8)" fill="#8E9C63" opacity=".85"/><ellipse cx="154.0" cy="78.2" rx="5.5" ry="2.1" transform="rotate(73 154.0 78.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="146.0" cy="78.2" rx="5.5" ry="2.1" transform="rotate(-37 146.0 78.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="204.0" cy="91.4" rx="5.5" ry="2.1" transform="rotate(67 204.0 91.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="196.0" cy="91.4" rx="5.5" ry="2.1" transform="rotate(-43 196.0 91.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="254.0" cy="99.4" rx="5.5" ry="2.1" transform="rotate(61 254.0 99.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="246.0" cy="99.4" rx="5.5" ry="2.1" transform="rotate(-49 246.0 99.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="304.0" cy="102.0" rx="5.5" ry="2.1" transform="rotate(55 304.0 102.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="296.0" cy="102.0" rx="5.5" ry="2.1" transform="rotate(-55 296.0 102.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="354.0" cy="99.4" rx="5.5" ry="2.1" transform="rotate(49 354.0 99.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="346.0" cy="99.4" rx="5.5" ry="2.1" transform="rotate(-61 346.0 99.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="404.0" cy="91.4" rx="5.5" ry="2.1" transform="rotate(43 404.0 91.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="396.0" cy="91.4" rx="5.5" ry="2.1" transform="rotate(-67 396.0 91.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="454.0" cy="78.2" rx="5.5" ry="2.1" transform="rotate(37 454.0 78.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="446.0" cy="78.2" rx="5.5" ry="2.1" transform="rotate(-73 446.0 78.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="504.0" cy="59.8" rx="5.5" ry="2.1" transform="rotate(32 504.0 59.8)" fill="#8E9C63" opacity=".85"/><ellipse cx="496.0" cy="59.8" rx="5.5" ry="2.1" transform="rotate(-78 496.0 59.8)" fill="#8E9C63" opacity=".85"/><ellipse cx="554.0" cy="36.0" rx="5.5" ry="2.1" transform="rotate(27 554.0 36.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="546.0" cy="36.0" rx="5.5" ry="2.1" transform="rotate(-83 546.0 36.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="604.0" cy="7.0" rx="5.5" ry="2.1" transform="rotate(23 604.0 7.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="596.0" cy="7.0" rx="5.5" ry="2.1" transform="rotate(-87 596.0 7.0)" fill="#8E9C63" opacity=".85"/><use href="#dj" x="-13.0" y="-13.0" width="26" height="26"/><use href="#dj" x="15.0" y="5.2" width="20" height="20"/><use href="#dj" x="37.0" y="16.0" width="26" height="26"/><circle cx="63.0" cy="30.0" r="2.4" fill="#D9B05A"/><use href="#dj" x="65.0" y="31.6" width="20" height="20"/><use href="#dj" x="87.0" y="39.8" width="26" height="26"/><use href="#dj" x="115.0" y="52.7" width="20" height="20"/><use href="#dj" x="137.0" y="58.2" width="26" height="26"/><circle cx="163.0" cy="72.2" r="2.4" fill="#D9B05A"/><use href="#dj" x="165.0" y="68.5" width="20" height="20"/><use href="#dj" x="187.0" y="71.4" width="26" height="26"/><use href="#dj" x="215.0" y="79.1" width="20" height="20"/><use href="#dj" x="237.0" y="79.4" width="26" height="26"/><circle cx="263.0" cy="93.4" r="2.4" fill="#D9B05A"/><use href="#dj" x="265.0" y="84.3" width="20" height="20"/><use href="#dj" x="287.0" y="82.0" width="26" height="26"/><use href="#dj" x="315.0" y="84.3" width="20" height="20"/><use href="#dj" x="337.0" y="79.4" width="26" height="26"/><circle cx="363.0" cy="93.4" r="2.4" fill="#D9B05A"/><use href="#dj" x="365.0" y="79.1" width="20" height="20"/><use href="#dj" x="387.0" y="71.4" width="26" height="26"/><use href="#dj" x="415.0" y="68.5" width="20" height="20"/><use href="#dj" x="437.0" y="58.2" width="26" height="26"/><circle cx="463.0" cy="72.2" r="2.4" fill="#D9B05A"/><use href="#dj" x="465.0" y="52.7" width="20" height="20"/><use href="#dj" x="487.0" y="39.8" width="26" height="26"/><use href="#dj" x="515.0" y="31.6" width="20" height="20"/><use href="#dj" x="537.0" y="16.0" width="26" height="26"/><circle cx="563.0" cy="30.0" r="2.4" fill="#D9B05A"/><use href="#dj" x="565.0" y="5.2" width="20" height="20"/><use href="#dj" x="587.0" y="-13.0" width="26" height="26"/><path d="M120.0 68.8 V94.8" stroke="#B8934A" stroke-width="1" opacity=".8"/><ellipse cx="120.0" cy="77.8" rx="4.5" ry="1.8" transform="rotate(90 120.0 77.8)" fill="#8E9C63" opacity=".85"/><use href="#dj" x="109.0" y="91.8" width="22" height="22"/><circle cx="120.0" cy="116.8" r="3" fill="#D9B05A"/><path d="M300.0 103.0 V145.0" stroke="#B8934A" stroke-width="1" opacity=".8"/><ellipse cx="300.0" cy="120.0" rx="4.5" ry="1.8" transform="rotate(90 300.0 120.0)" fill="#8E9C63" opacity=".85"/><use href="#dj" x="289.0" y="142.0" width="22" height="22"/><circle cx="300.0" cy="167.0" r="3" fill="#D9B05A"/><path d="M480.0 68.8 V94.8" stroke="#B8934A" stroke-width="1" opacity=".8"/><ellipse cx="480.0" cy="77.8" rx="4.5" ry="1.8" transform="rotate(90 480.0 77.8)" fill="#8E9C63" opacity=".85"/><use href="#dj" x="469.0" y="91.8" width="22" height="22"/><circle cx="480.0" cy="116.8" r="3" fill="#D9B05A"/></symbol><symbol id="deco-corner" viewBox="0 0 190 190"><path d="M0 2 C70 10 118 70 134 176" fill="none" stroke="#7F8E56" stroke-width="1.6" opacity=".8"/><path d="M30 6 C88 34 98 80 96 118" fill="none" stroke="#7F8E56" stroke-width="1.3" opacity=".75"/><ellipse cx="30.2" cy="7.1" rx="9.0" ry="3.5" transform="rotate(-30 30.2 7.1)" fill="#8E9C63" opacity=".85"/><ellipse cx="18.2" cy="11.1" rx="8.0" ry="3.0" transform="rotate(150 18.2 11.1)" fill="#8E9C63" opacity=".85"/><ellipse cx="48.9" cy="14.8" rx="9.0" ry="3.5" transform="rotate(-22 48.9 14.8)" fill="#8E9C63" opacity=".85"/><ellipse cx="36.9" cy="18.8" rx="8.0" ry="3.0" transform="rotate(156 36.9 18.8)" fill="#8E9C63" opacity=".85"/><ellipse cx="69.4" cy="28.0" rx="9.0" ry="3.5" transform="rotate(-14 69.4 28.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="57.4" cy="32.0" rx="8.0" ry="3.0" transform="rotate(162 57.4 32.0)" fill="#8E9C63" opacity=".85"/><ellipse cx="87.7" cy="45.5" rx="9.0" ry="3.5" transform="rotate(-6 87.7 45.5)" fill="#8E9C63" opacity=".85"/><ellipse cx="75.7" cy="49.5" rx="8.0" ry="3.0" transform="rotate(168 75.7 49.5)" fill="#8E9C63" opacity=".85"/><ellipse cx="103.6" cy="67.2" rx="9.0" ry="3.5" transform="rotate(2 103.6 67.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="91.6" cy="71.2" rx="8.0" ry="3.0" transform="rotate(174 91.6 71.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="117.2" cy="93.2" rx="9.0" ry="3.5" transform="rotate(10 117.2 93.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="105.2" cy="97.2" rx="8.0" ry="3.0" transform="rotate(180 105.2 97.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="128.3" cy="123.3" rx="9.0" ry="3.5" transform="rotate(18 128.3 123.3)" fill="#8E9C63" opacity=".85"/><ellipse cx="116.3" cy="127.3" rx="8.0" ry="3.0" transform="rotate(186 116.3 127.3)" fill="#8E9C63" opacity=".85"/><ellipse cx="136.8" cy="157.4" rx="9.0" ry="3.5" transform="rotate(26 136.8 157.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="124.8" cy="161.4" rx="8.0" ry="3.0" transform="rotate(192 124.8 161.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="64.3" cy="24.8" rx="7.0" ry="2.75" transform="rotate(-10 64.3 24.8)" fill="#8E9C63" opacity=".85"/><ellipse cx="54.3" cy="27.8" rx="6.5" ry="2.5" transform="rotate(170 54.3 27.8)" fill="#8E9C63" opacity=".85"/><ellipse cx="83.9" cy="46.6" rx="7.0" ry="2.75" transform="rotate(0 83.9 46.6)" fill="#8E9C63" opacity=".85"/><ellipse cx="73.9" cy="49.6" rx="6.5" ry="2.5" transform="rotate(176 73.9 49.6)" fill="#8E9C63" opacity=".85"/><ellipse cx="95.3" cy="70.2" rx="7.0" ry="2.75" transform="rotate(10 95.3 70.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="85.3" cy="73.2" rx="6.5" ry="2.5" transform="rotate(182 85.3 73.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="100.5" cy="94.4" rx="7.0" ry="2.75" transform="rotate(20 100.5 94.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="90.5" cy="97.4" rx="6.5" ry="2.5" transform="rotate(188 90.5 97.4)" fill="#8E9C63" opacity=".85"/><ellipse cx="101.2" cy="112.2" rx="7.0" ry="2.75" transform="rotate(30 101.2 112.2)" fill="#8E9C63" opacity=".85"/><ellipse cx="91.2" cy="115.2" rx="6.5" ry="2.5" transform="rotate(194 91.2 115.2)" fill="#8E9C63" opacity=".85"/><use href="#dj" x="18.6" y="-5.7" width="34" height="34"/><use href="#dj" x="57.8" y="21.2" width="30" height="30"/><use href="#dj" x="88.4" y="61.4" width="28" height="28"/><use href="#dj" x="116.2" y="133.6" width="24" height="24"/><use href="#dj" x="73.5" y="46.2" width="24" height="24"/><use href="#dj" x="86.0" y="90.4" width="20" height="20"/><circle cx="68.8" cy="27.1" r="2.6" fill="#D9B05A"/><circle cx="123.2" cy="97.2" r="2.6" fill="#D9B05A"/></symbol></svg>
 
   <!-- ============ INTRO VIDEO (Akshay & Shreya Nilavilakku opening film) ============ -->
   <div id="intro-screen" role="dialog" aria-label="Wedding invitation opening">
@@ -41,6 +63,9 @@
     <button id="intro-play" type="button" aria-label="Play the opening film"><span class="ip-icon" aria-hidden="true"></span><span class="ip-label">Tap to Open</span></button>
     <button id="skip-intro" type="button">Skip Intro</button>
   </div>
+
+  <!-- golden light that carries the opening film into the hero -->
+  <div id="gold-wash" aria-hidden="true"></div>
 
   <!-- ============ AMBIENT DECOR ============ -->
   <div id="cursor-glow"></div>
@@ -60,6 +85,7 @@
       <div class="veil"
         style="background:linear-gradient(180deg, rgba(18,12,7,0.22) 0%, rgba(18,12,7,0.04) 28%, rgba(18,12,7,0.38) 58%, rgba(18,12,7,0.84) 100%);">
       </div>
+      <div class="hero-glow" aria-hidden="true" data-glow></div>
       <div class="bg-content">
         <div class="monogram">The Wedding Of</div>
         <h1 class="hero-names script" id="hero-names" aria-label="Akshay and Shreya"><span class="name-part" aria-hidden="true">Akshay</span> <span
@@ -117,20 +143,36 @@
             &amp; Shreya's forever, celebrated across three occasions of tradition, music and blessings.</p>
         </div>
         <div class="divider"></div>
-        <div class="scratch-wrap">
-          <div class="scratch-reveal">
-            <div class="eyebrow">Save The Date</div>
-            <div class="rdate serif">31 January 2027</div>
-            <div class="rday">Sunday · Muhurtham 10:15 – 11:00 AM</div>
+        <div class="invite-stage" id="invite-stage">
+          <div class="invite-glow" aria-hidden="true"></div>
+          <div class="invite-card" id="invite-card">
+            <div class="invite-inner paper" id="invite-date" role="group" aria-label="Wedding date" tabindex="-1">
+              <svg class="cc cc--tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--bl" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--br" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg>
+              <svg class="cover-orn" viewBox="0 0 80 44" aria-hidden="true"><use href="#deco-lotus"/></svg>
+              <span class="inv-kicker">Save The Date</span>
+              <span class="rdate serif">31 January 2027</span>
+              <span class="inv-line" aria-hidden="true"></span>
+              <span class="rday">Sunday · Muhurtham 10:15 – 11:00 AM</span>
+            </div>
+            <button class="invite-cover" id="invite-open" type="button" aria-expanded="false" aria-controls="invite-date">
+              <span class="sr-only">A Special Date Awaits. Tap to open the invitation and reveal the wedding date.</span>
+              <span class="invite-flap invite-flap--l" aria-hidden="true"><span class="flap-front"><span class="cover"><svg class="cc cc--tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--bl" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--br" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><span class="cover-body"><svg class="cover-orn" viewBox="0 0 80 44" aria-hidden="true"><use href="#deco-lotus"/></svg><span class="cover-kicker">Akshay &amp; Shreya</span><span class="cover-title script">A Special<br>Date Awaits</span><span class="cover-line" aria-hidden="true"></span></span></span></span><span class="flap-back"></span></span>
+              <span class="invite-flap invite-flap--r" aria-hidden="true"><span class="flap-front"><span class="cover"><svg class="cc cc--tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--bl" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><svg class="cc cc--br" viewBox="0 0 40 40" aria-hidden="true"><use href="#deco-cornerline"/></svg><span class="cover-body"><svg class="cover-orn" viewBox="0 0 80 44" aria-hidden="true"><use href="#deco-lotus"/></svg><span class="cover-kicker">Akshay &amp; Shreya</span><span class="cover-title script">A Special<br>Date Awaits</span><span class="cover-line" aria-hidden="true"></span></span></span></span><span class="flap-back"></span></span>
+            </button>
           </div>
-          <canvas id="scratch-canvas" aria-hidden="true"></canvas>
+          <p class="invite-hint" id="invite-hint"><span aria-hidden="true">✦</span> Tap to Open <span aria-hidden="true">✦</span></p>
         </div>
-        <p class="scratch-hint" id="scratch-hint">Scratch the gold with your cursor or finger</p>
       </div>
     </section>
 
     <!-- EVENTS — ILLUSTRATED CELEBRATIONS JOURNEY -->
-    <section id="events" class="section">
+    <section id="events" class="section cine">
+      <div class="deco" aria-hidden="true">
+        <div class="deco-p deco-garland" data-depth=".08"><div class="sway"><svg viewBox="-20 -20 640 190"><use href="#deco-garland"/></svg></div></div>
+        <div class="deco-p deco-lamp deco-lamp--l" style="top:30%" data-depth=".6"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
+        <div class="deco-p deco-lamp deco-lamp--r" style="top:64%" data-depth=".9"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
+        <div class="deco-p deco-corner deco-corner--bl" data-depth=".4"><div class="sway"><svg viewBox="0 0 190 190"><use href="#deco-corner"/></svg></div></div>
+      </div>
       <div class="eyebrow">Join Us For</div>
       <h2 style="font-size:clamp(32px,5vw,52px);color:var(--olive-dark);">Our Celebrations</h2>
       <p class="section-sub serif">Three Beautiful Celebrations, One Forever Story</p>
@@ -148,10 +190,11 @@
             <div class="event-num">Event 01</div>
             <h3 class="event-title serif">Sangeeth Night</h3>
             <p class="event-caption">A Night of Music, Joy &amp; Celebration</p>
-            <div class="event-meta"><span class="event-date">Saturday, 30 January 2027</span><span class="event-time-note">Time: To be confirmed</span></div>
+            <div class="event-meta"><span class="event-date">Saturday, 30 January 2027</span><span><b>5:30 PM – 8:30 PM</b></span></div>
             <div class="event-venue"><b>Kalarikkal Convention Centre</b><br>Kuzhalmannam, Palakkad</div>
             <div class="event-actions">
               <a class="btn solid" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Kalarikkal%20Convention%20Centre%2C%20Kuzhalmannam%2C%20Palakkad%2C%20Kerala">Get Directions</a>
+            <a class="btn" href="assets/calendar/sangeeth.ics" download>Add to Calendar</a>
             </div>
           </div>
         </article>
@@ -200,51 +243,73 @@
     </section>
 
     <!-- LOVE STORY -->
-    <section id="story" class="section">
+    <!-- LOVE STORY -->
+    <section id="story" class="section cine">
+      <div class="deco" aria-hidden="true">
+        <div class="deco-p deco-garland" data-depth=".08"><div class="sway"><svg viewBox="-20 -20 640 190"><use href="#deco-garland"/></svg></div></div>
+        <div class="deco-p deco-corner deco-corner--tl" data-depth=".4"><div class="sway"><svg viewBox="0 0 190 190"><use href="#deco-corner"/></svg></div></div>
+        <div class="deco-p deco-corner deco-corner--br" data-depth=".4"><div class="sway"><svg viewBox="0 0 190 190"><use href="#deco-corner"/></svg></div></div>
+        <div class="deco-p deco-lamp deco-lamp--r" style="top:9%" data-depth="0.7"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
+        <div class="deco-p deco-lamp deco-lamp--l" style="top:58%" data-depth="0.9"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
+      </div>
       <div class="eyebrow">Their Journey</div>
-      <h2 style="font-size:clamp(30px,4.5vw,48px);color:var(--olive-dark);">A Love Story</h2>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">Casual Memories</div>
-          <h3 class="tl-title serif">Everyday Moments</h3>
-          <p class="tl-text">Easy, candid frames of the two of them, smiling for the camera and for each other.</p>
-          <figure class="tl-photo" style="--ar:1200/1599" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya laughing in red helmets on a bike ride">
-            <img src="assets/images/couple/memory-03-800.webp" srcset="assets/images/couple/memory-03-480.webp 480w, assets/images/couple/memory-03-800.webp 800w, assets/images/couple/memory-03.webp 1200w" sizes="210px" width="1200" height="1599" alt="Akshay and Shreya laughing in red helmets on a bike ride" data-full="assets/images/couple/memory-03.webp" loading="lazy" decoding="async">
-          </figure>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">Romantic Portraits</div>
-          <h3 class="tl-title serif">Together in Frame</h3>
-          <p class="tl-text">Portraits of Akshay and Shreya, close and laughing in the sunlight.</p>
-          <figure class="tl-photo" style="--ar:1200/1200" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay in a white shirt and Shreya in a maroon outfit laughing as they look at each other among sunlit leaves">
-            <img src="assets/images/couple/romantic-couple-800.webp" srcset="assets/images/couple/romantic-couple-480.webp 480w, assets/images/couple/romantic-couple-800.webp 800w, assets/images/couple/romantic-couple.webp 1200w" sizes="210px" width="1200" height="1200" alt="Akshay in a white shirt and Shreya in a maroon outfit laughing as they look at each other among sunlit leaves" data-full="assets/images/couple/romantic-couple.webp" loading="lazy" decoding="async">
-          </figure>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">The Proposal</div>
-          <h3 class="tl-title serif">A Heart of Roses</h3>
-          <p class="tl-text">One knee, a glowing heart of roses and a hand held tight.</p>
-          <figure class="tl-photo" style="--ar:1066/1599" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay kneels in front of a glowing heart of red roses, holding Shreya’s hand as he proposes">
-            <img src="assets/images/couple/proposal-800.webp" srcset="assets/images/couple/proposal-480.webp 480w, assets/images/couple/proposal-800.webp 800w, assets/images/couple/proposal.webp 1066w" sizes="210px" width="1066" height="1599" alt="Akshay kneels in front of a glowing heart of red roses, holding Shreya’s hand as he proposes" data-full="assets/images/couple/proposal.webp" loading="lazy" decoding="async">
-          </figure>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">Traditional Portraits</div>
-          <h3 class="tl-title serif">Dressed for the Celebration</h3>
-          <p class="tl-text">Akshay and Shreya in traditional attire, ahead of the wedding celebrations.</p>
-          <figure class="tl-photo" style="--ar:1200/1801" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a pink and gold outfit and Akshay in a light green kurta stand on either side of a carved wooden pillar, smiling at each other">
-            <img src="assets/images/couple/couple-pillar-800.webp" srcset="assets/images/couple/couple-pillar-480.webp 480w, assets/images/couple/couple-pillar-800.webp 800w, assets/images/couple/couple-pillar.webp 1200w" sizes="210px" width="1200" height="1801" alt="Shreya in a pink and gold outfit and Akshay in a light green kurta stand on either side of a carved wooden pillar, smiling at each other" data-full="assets/images/couple/couple-pillar.webp" loading="lazy" decoding="async">
-          </figure>
-        </div>
+      <h2 style="font-size:clamp(32px,5vw,52px);color:var(--olive-dark);">Our Love Story</h2>
+      <p class="section-sub serif">Six Chapters, One Beautiful Journey</p>
+      <div class="story-wrap" id="story-wrap">
+        <div class="story-line" aria-hidden="true"><div class="story-line-fill" id="story-fill"></div><span class="story-head" id="story-head"></span></div>
+        <ol class="story" id="story-list">
+        <li class="chapter">
+          <span class="ch-dot" aria-hidden="true"></span>
+          <div class="ch-text"><span class="ch-num">Chapter 01 <span class="ch-year">· 2002</span></span><h3 class="ch-title serif">The Beginning</h3><p class="ch-p">Some of the most beautiful stories begin without us even knowing. Ours began in 2002, when we first met. Two young hearts, unaware that this simple meeting would one day become the beginning of a lifetime together.</p></div>
+          <div class="ch-media"><div class="year-art" aria-hidden="true"><span class="year-num script">2002</span><span class="year-cap">when we first met</span></div></div>
+        </li>
+<li class="chapter">
+          <span class="ch-dot" aria-hidden="true"></span>
+          <div class="ch-text"><span class="ch-num">Chapter 02</span><h3 class="ch-title serif">A Beautiful Friendship</h3><p class="ch-p">What started as a simple connection slowly grew into a wonderful friendship. We became close friends, sharing endless conversations, laughter, little secrets, and countless memories.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:780/1040" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie">
+              <img src="assets/images/couple/couple-blue-fleece.webp" srcset="assets/images/couple/couple-blue-fleece-480.webp 480w, assets/images/couple/couple-blue-fleece.webp 780w" sizes="(max-width: 767px) 72vw, 300px" width="780" height="1040" alt="Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie" data-full="assets/images/couple/couple-blue-fleece.webp" loading="lazy" decoding="async">
+            </figure></div>
+        </li>
+<li class="chapter">
+          <span class="ch-dot" aria-hidden="true"></span>
+          <div class="ch-text"><span class="ch-num">Chapter 03</span><h3 class="ch-title serif">Our College Days</h3><p class="ch-p">College brought us even closer. We studied together, supported each other, celebrated the little moments, and created memories that became some of the most precious chapters of our lives.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:780/1040" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall">
+              <img src="assets/images/couple/couple-campus-hall.webp" srcset="assets/images/couple/couple-campus-hall-480.webp 480w, assets/images/couple/couple-campus-hall.webp 780w" sizes="(max-width: 767px) 72vw, 300px" width="780" height="1040" alt="Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall" data-full="assets/images/couple/couple-campus-hall.webp" loading="lazy" decoding="async">
+            </figure></div>
+        </li>
+<li class="chapter">
+          <span class="ch-dot" aria-hidden="true"></span>
+          <div class="ch-text"><span class="ch-num">Chapter 04</span><h3 class="ch-title serif">More Than Friends</h3><p class="ch-p">Somewhere between our everyday conversations and the moments we spent together, friendship quietly began turning into something more. What once felt like an ordinary friendship became a bond neither of us could imagine living without.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:585/1040;--w:250px" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop">
+              <img src="assets/images/couple/couple-green-forest.webp" srcset="assets/images/couple/couple-green-forest-480.webp 480w, assets/images/couple/couple-green-forest.webp 585w" sizes="(max-width: 767px) 72vw, 300px" width="585" height="1040" alt="Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop" data-full="assets/images/couple/couple-green-forest.webp" loading="lazy" decoding="async">
+            </figure></div>
+        </li>
+<li class="chapter">
+          <span class="ch-dot" aria-hidden="true"></span>
+          <div class="ch-text"><span class="ch-num">Chapter 05</span><h3 class="ch-title serif">The Proposal</h3><p class="ch-p">And then came the moment that changed everything. After years of friendship and unforgettable memories, he finally gathered the courage to tell her what his heart had been feeling. He proposed, opening the door to a beautiful new chapter.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:1066/1599;--w:260px" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay kneels in front of a glowing heart of red roses, holding Shreya’s hand as he proposes">
+              <img src="assets/images/couple/proposal-800.webp" srcset="assets/images/couple/proposal-480.webp 480w, assets/images/couple/proposal-800.webp 800w, assets/images/couple/proposal.webp 1066w" sizes="(max-width: 767px) 72vw, 300px" width="1066" height="1599" alt="Akshay kneels in front of a glowing heart of red roses, holding Shreya’s hand as he proposes" data-full="assets/images/couple/proposal.webp" loading="lazy" decoding="async">
+            </figure></div>
+        </li>
+<li class="chapter">
+          <span class="ch-dot" aria-hidden="true"></span>
+          <div class="ch-text"><span class="ch-num">Chapter 06</span><h3 class="ch-title serif">Our Forever</h3><p class="ch-p">From the day we first met in 2002 to the beautiful journey that followed, every memory has brought us closer to this moment. Now, surrounded by love and blessings, we are ready to begin our forever.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:1200/1801;--w:260px" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a pink and gold outfit and Akshay in a light green kurta stand on either side of a carved wooden pillar, smiling at each other">
+              <img src="assets/images/couple/couple-pillar-800.webp" srcset="assets/images/couple/couple-pillar-480.webp 480w, assets/images/couple/couple-pillar-800.webp 800w, assets/images/couple/couple-pillar.webp 1200w" sizes="(max-width: 767px) 72vw, 300px" width="1200" height="1801" alt="Shreya in a pink and gold outfit and Akshay in a light green kurta stand on either side of a carved wooden pillar, smiling at each other" data-full="assets/images/couple/couple-pillar.webp" loading="lazy" decoding="async">
+            </figure></div>
+        </li>
+        </ol>
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="section" style="min-height:auto;padding-bottom:110px;">
+        <!-- GALLERY -->
+    <section id="gallery" class="section cine" style="min-height:auto;padding-bottom:110px;">
+      <div class="deco" aria-hidden="true">
+        <div class="deco-p deco-garland" data-depth=".08"><div class="sway"><svg viewBox="-20 -20 640 190"><use href="#deco-garland"/></svg></div></div>
+        <div class="deco-p deco-lamp deco-lamp--l" style="top:22%" data-depth=".8"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
+        <div class="deco-p deco-lamp deco-lamp--r" style="top:70%" data-depth=".6"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
+        <div class="deco-p deco-corner deco-corner--br" data-depth=".4"><div class="sway"><svg viewBox="0 0 190 190"><use href="#deco-corner"/></svg></div></div>
+      </div>
       <div class="gallery-rays" aria-hidden="true"></div>
       <div class="bg-content" style="position:relative;z-index:2;width:100%;">
         <div class="eyebrow">Moments</div>
@@ -263,6 +328,14 @@
           </div>
 
           <div class="photo-wall" id="photoWall" aria-label="Photographs of Akshay and Shreya">
+            <figure class="photo-card photo-card--md photo-tile" data-enter="left" data-speed="-0.05" style="--rot:2.4deg;--nudge-y:-8px;--drift-delay:1.0s;" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall">
+              <div class="photo-card__inner">
+                <div class="photo-card__paper">
+                  <img src="assets/images/couple/couple-campus-hall.webp" srcset="assets/images/couple/couple-campus-hall-480.webp 480w, assets/images/couple/couple-campus-hall.webp 780w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="780" height="1040" alt="Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall" data-full="assets/images/couple/couple-campus-hall.webp" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </figure>
+
             <figure class="photo-card photo-card--sm photo-tile" data-enter="up" data-speed="0.04" style="--rot:-1.8deg;--nudge-y:10px;--drift-delay:1s;" data-lb tabindex="0" role="button" aria-label="Open photo: Portrait of Akshay smiling in a light green embroidered kurta, one fist raised in joy">
               <div class="photo-card__inner">
                 <div class="photo-card__paper">
@@ -287,10 +360,10 @@
               </div>
             </figure>
 
-            <figure class="photo-card photo-card--sm photo-tile" data-enter="up" data-speed="-0.04" style="--rot:2.2deg;--nudge-y:-6px;--drift-delay:0.3s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya smiling in a candlelit restaurant">
+            <figure class="photo-card photo-card--lg photo-tile" data-enter="up" data-speed="0.04" style="--rot:-2.2deg;--nudge-y:8px;--drift-delay:0.4s;" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie">
               <div class="photo-card__inner">
                 <div class="photo-card__paper">
-                  <img src="assets/images/couple/memory-01-800.webp" srcset="assets/images/couple/memory-01-480.webp 480w, assets/images/couple/memory-01-800.webp 800w, assets/images/couple/memory-01.webp 864w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="864" height="1152" alt="Akshay and Shreya smiling in a candlelit restaurant" data-full="assets/images/couple/memory-01.webp" loading="lazy" decoding="async">
+                  <img src="assets/images/couple/couple-blue-fleece.webp" srcset="assets/images/couple/couple-blue-fleece-480.webp 480w, assets/images/couple/couple-blue-fleece.webp 780w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="780" height="1040" alt="Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie" data-full="assets/images/couple/couple-blue-fleece.webp" loading="lazy" decoding="async">
                 </div>
               </div>
             </figure>
@@ -327,10 +400,10 @@
               </div>
             </figure>
 
-            <figure class="photo-card photo-card--md photo-tile" data-enter="right" data-speed="0.05" style="--rot:-2.1deg;--nudge-y:10px;--drift-delay:0.6s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay perched on a kitchen counter with Shreya leaning against him, both smiling">
+            <figure class="photo-card photo-card--lg photo-tile" data-enter="right" data-speed="0.05" style="--rot:-2.8deg;--nudge-y:10px;--drift-delay:0.7s;" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop">
               <div class="photo-card__inner">
                 <div class="photo-card__paper">
-                  <img src="assets/images/couple/memory-04-800.webp" srcset="assets/images/couple/memory-04-480.webp 480w, assets/images/couple/memory-04-800.webp 800w, assets/images/couple/memory-04.webp 960w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="960" height="1280" alt="Akshay perched on a kitchen counter with Shreya leaning against him, both smiling" data-full="assets/images/couple/memory-04.webp" loading="lazy" decoding="async">
+                  <img src="assets/images/couple/couple-green-forest.webp" srcset="assets/images/couple/couple-green-forest-480.webp 480w, assets/images/couple/couple-green-forest.webp 585w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="585" height="1040" alt="Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop" data-full="assets/images/couple/couple-green-forest.webp" loading="lazy" decoding="async">
                 </div>
               </div>
             </figure>
@@ -339,6 +412,21 @@
               <div class="photo-card__inner">
                 <div class="photo-card__paper">
                   <img src="assets/images/couple/hero-couple-800.webp" srcset="assets/images/couple/hero-couple-480.webp 480w, assets/images/couple/hero-couple-800.webp 800w, assets/images/couple/hero-couple.webp 1066w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1066" height="1599" alt="Akshay in a light green embroidered kurta gently holds Shreya’s face as the two smile at each other, Shreya in a pink and gold outfit with green jewellery" data-full="assets/images/couple/hero-couple.webp" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </figure>
+            <figure class="photo-card photo-card--sm photo-tile" data-enter="up" data-speed="-0.04" style="--rot:1.8deg;--nudge-y:-6px;--drift-delay:1.4s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya laughing in red helmets on a bike ride">
+              <div class="photo-card__inner">
+                <div class="photo-card__paper">
+                  <img src="assets/images/couple/memory-03-800.webp" srcset="assets/images/couple/memory-03-480.webp 480w, assets/images/couple/memory-03-800.webp 800w, assets/images/couple/memory-03.webp 1200w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1200" height="1599" alt="Akshay and Shreya laughing in red helmets on a bike ride" data-full="assets/images/couple/memory-03.webp" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </figure>
+
+            <figure class="photo-card photo-card--md photo-tile" data-enter="left" data-speed="0.04" style="--rot:-1.9deg;--nudge-y:8px;--drift-delay:0.2s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay in a white shirt and Shreya in a maroon outfit laughing as they look at each other among sunlit leaves">
+              <div class="photo-card__inner">
+                <div class="photo-card__paper">
+                  <img src="assets/images/couple/romantic-couple-800.webp" srcset="assets/images/couple/romantic-couple-480.webp 480w, assets/images/couple/romantic-couple-800.webp 800w, assets/images/couple/romantic-couple.webp 1200w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1200" height="1200" alt="Akshay in a white shirt and Shreya in a maroon outfit laughing as they look at each other among sunlit leaves" data-full="assets/images/couple/romantic-couple.webp" loading="lazy" decoding="async">
                 </div>
               </div>
             </figure>
@@ -390,6 +478,7 @@
               <div class="v-label">Sangeeth &amp; Wedding Venue</div>
               <div class="v-name serif">Kalarikkal Convention Centre</div>
               <div class="v-addr">Kuzhalmannam, Palakkad</div>
+              <div class="v-when"><span>Sangeeth · Sat, 30 Jan 2027 · <b>5:30 PM – 8:30 PM</b></span><span>Wedding · Sun, 31 Jan 2027 · <b>Muhurtham 10:15 – 11:00 AM</b></span></div>
             </div>
             <div class="venue-actions">
               <a class="btn solid" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Kalarikkal%20Convention%20Centre%2C%20Kuzhalmannam%2C%20Palakkad%2C%20Kerala">Get Directions</a>
@@ -402,6 +491,7 @@
               <div class="v-label">Reception Venue</div>
               <div class="v-name serif">Meledathu Auditorium</div>
               <div class="v-addr">Adoor, Pathanamthitta</div>
+              <div class="v-when"><span>Reception · Wed, 3 Feb 2027 · <b>6:00 PM – 9:00 PM</b></span></div>
             </div>
             <div class="venue-actions">
               <a class="btn solid" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Meledathu%20Auditorium%2C%20Adoor%2C%20Pathanamthitta%2C%20Kerala">Get Directions</a>
@@ -415,54 +505,15 @@
       </div>
     </section>
 
-    <!-- RSVP -->
-    <section id="rsvp" class="section">
-      <div class="eyebrow">Kindly Respond</div>
-      <h2 style="font-size:clamp(30px,4.5vw,48px);color:var(--olive-dark);">Will you Attend?</h2>
-      <div class="rsvp-card">
-        <form id="rsvp-form" novalidate>
-          <div class="field"><label for="r-name">Full Name</label>
-            <input type="text" id="r-name" name="name" required maxlength="80" autocomplete="name" placeholder="Your name">
-            <span class="err" data-for="name"></span></div>
-          <div class="field"><label for="r-phone">Phone Number</label>
-            <input type="tel" id="r-phone" name="phone" required maxlength="20" inputmode="tel" autocomplete="tel" placeholder="+91">
-            <span class="err" data-for="phone"></span></div>
-          <div class="field"><label for="r-guests">Number Of Guests</label>
-            <input type="number" id="r-guests" name="guests" min="1" max="10" value="1" required>
-            <span class="err" data-for="guests"></span></div>
-          <div class="field"><label id="attend-label">Will You Attend?</label>
-            <div class="attend-toggle" role="group" aria-labelledby="attend-label">
-              <button type="button" class="active" data-val="yes" aria-pressed="true">COUNT ME IN</button>
-              <button type="button" data-val="no" aria-pressed="false">SENDING MY LOVE</button>
-            </div>
-          </div>
-          <div class="field" id="events-field"><label id="events-label">Which Events?</label>
-            <div class="attend-toggle wrap" role="group" aria-labelledby="events-label">
-              <button type="button" data-event="Sangeeth" aria-pressed="false">Sangeeth</button>
-              <button type="button" data-event="Wedding" aria-pressed="false">Wedding</button>
-              <button type="button" data-event="Reception" aria-pressed="false">Reception</button>
-            </div>
-            <span class="err" data-for="events"></span>
-          </div>
-          <div class="field"><label for="r-message">Message For The Couple</label>
-            <textarea rows="3" id="r-message" name="message" maxlength="500" placeholder="Leave your blessings…"></textarea></div>
-          <div class="hp" aria-hidden="true"><label>Website <input type="text" id="r-website" tabindex="-1" autocomplete="off"></label></div>
-          <button type="submit" class="rsvp-submit" id="rsvp-btn">Submit RSVP</button>
-          <p class="rsvp-status" id="rsvp-status" role="status" aria-live="polite"></p>
-        </form>
-        <div class="rsvp-success" id="rsvp-success" role="status">
-          <div style="font-size:34px;" aria-hidden="true">🌸</div>
-          <p style="margin-top:8px;">Thank you! Your RSVP has been received.</p>
-        </div>
-        <p class="rsvp-note">Please respond so we can plan with you in mind. For anything urgent, feel free to reach
-          out to the family directly.</p>
-      </div>
-    </section>
-
     <!-- FOOTER -->
     <section id="footer-section" class="section bg-section">
       <div class="bg-layer" id="footer-bg" style="background-image:url('assets/images/footer-bg.webp');animation-duration:34s;" aria-hidden="true"></div>
       <div class="veil footer-veil" aria-hidden="true"></div>
+      <div class="deco deco--front" aria-hidden="true">
+        <div class="deco-p deco-garland" data-depth=".08"><div class="sway"><svg viewBox="-20 -20 640 190"><use href="#deco-garland"/></svg></div></div>
+        <div class="deco-p deco-lamp deco-lamp--l" style="bottom:7%" data-depth=".5"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
+        <div class="deco-p deco-lamp deco-lamp--r" style="bottom:7%" data-depth=".5"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
+      </div>
       <div id="lantern-field" aria-hidden="true"></div>
       <div class="bg-content footer-content">
         <div class="thank">With Love &amp; Gratitude</div>
@@ -495,7 +546,6 @@
   </button>
   <audio id="bg-music" loop preload="none"><source src="assets/music.webm" type="audio/webm"><source src="assets/music.mp3" type="audio/mpeg"></audio>
 
-  <script src="config.js"></script>
   <script src="assets/vendor/gsap.min.js"></script>
   <script src="assets/vendor/ScrollTrigger.min.js"></script>
   <script src="assets/vendor/lenis.min.js"></script>

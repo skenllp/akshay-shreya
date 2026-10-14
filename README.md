@@ -5,12 +5,14 @@ Customised version of the Jishnu & Vibha template. Static site (HTML, CSS, vanil
 ## Deploy
 Drag this folder onto Netlify, or import into Vercel (framework "Other", no build command).
 
-## RSVP
-Create a Google Sheet > Extensions > Apps Script, paste `google-apps-script/Code.gs`, deploy as a Web app (Execute as Me, access Anyone), then paste the `/exec` URL into `config.js` as `RSVP_ENDPOINT`. Until then the form validates but reports that RSVP is not switched on.
-
 ## Notes
 - Opening video: `assets/video/wedding-opening.mp4` (Kerala Nilavilakku opening, lightened slightly; poster `assets/images/opening-poster.jpg` is its exact first frame; does not autoplay: visitors tap "Tap to Open" to start it; Skip Intro button; falls back to the hero if it cannot play).
-- Sangeeth time is "To be confirmed" (no calendar file until known).
+- Sangeeth: Saturday 30 January 2027, 5:30 PM – 8:30 PM (`assets/calendar/sangeeth.ics`).
+- RSVP has been removed entirely (section, styles, script, config and Apps Script backend).
+- Opening film ends in a golden-light fade into the hero (`#gold-wash`, `endIntro()` in `js/main.js`).
+- Date reveal: Golden Invitation Unfold (`#invite-stage`) — a native button, works with keyboard, reduced motion and without JS (date always in the DOM).
+- Love Story: six chapters, `initStory()`; gold atmosphere (lamps, garlands, florals) is the `.cine` / `.deco` layer with an inline SVG sprite at the top of `index.html`.
+- New couple photos: `assets/images/couple/couple-{blue-fleece,campus-hall,green-forest}` (480w + full size WebP, unretouched).
 - Photos: website copies in `assets/images/couple/`; untouched originals are in `../original-photos/` (not deployed).
 
 - Celebrations: three alternating illustrated events joined by one scroll-driven gold dotted SVG path (`buildJourney()` in `js/main.js`, GSAP ScrollTrigger scrub). It is rebuilt on resize, font load and image load, and shows fully drawn for `prefers-reduced-motion`.

@@ -17,14 +17,30 @@
 
   setTimeout(() => skipIntroBtn.classList.add('show'), 800);
 
+  /* golden light: the lamp-lit film dissolves into warm gold, which then lifts to reveal the hero */
+  const wash = document.getElementById('gold-wash');
+  let washAt = 0, ending = false;
+  function washIn(d) {
+    if (washAt || !animate) return;
+    washAt = performance.now();
+    gsap.to(wash, { opacity: 1, duration: d, ease: 'power1.in' });
+  }
+  introVideo.addEventListener('timeupdate', () => {            /* begin the glow just before the last frame */
+    if (introVideo.duration && introVideo.duration - introVideo.currentTime < 0.85) washIn(0.8);
+  });
   function endIntro() {
-    if (introScreen.classList.contains('fade-out')) return;
-    introScreen.classList.add('fade-out');
+    if (ending) return; ending = true;
     startMusic();
-    document.body.style.overflow = '';
-    gsap.to(site, { opacity: 1, duration: 1.4, ease: 'power2.out' });
-    setTimeout(() => introScreen.remove(), 1400);
-    initScrollAnimations();
+    washIn(0.75);
+    const wait = animate ? Math.max(0, 0.8 - (performance.now() - washAt) / 1000) : 0;
+    gsap.delayedCall(wait, () => {
+      introScreen.remove();
+      gsap.set(site, { opacity: 1 });
+      document.body.style.overflow = '';
+      initScrollAnimations();
+      if (animate) gsap.to(wash, { opacity: 0, duration: 2, delay: 0.1, ease: 'power2.out', onComplete: () => wash.remove() });
+      else wash.remove();
+    });
   }
   introVideo.addEventListener('ended', endIntro);
   introVideo.addEventListener('error', endIntro);
@@ -155,19 +171,14 @@
       gsap.from('.portrait-amp', { opacity: 0, scale: 0.6, duration: 0.9, delay: 0.2, ease: 'power2.out',
         scrollTrigger: { trigger: '.portrait-row', start: 'top 80%', once: true } });
 
-      gsap.utils.toArray('.tl-item').forEach((item) => {
-        gsap.to(item, {
-          opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: item, start: 'top 85%' }
-        });
-      });
+      initStory();
+      initDecorParallax();
 
       gsap.from('.venue-row', {
         opacity: 0, y: 30, duration: 0.9, stagger: 0.15, ease: 'power2.out',
         scrollTrigger: { trigger: '.location-card', start: 'top 82%' }
       });
 
-      gsap.from('.rsvp-card', { opacity: 0, y: 60, duration: 1, scrollTrigger: { trigger: '.rsvp-card', start: 'top 80%' } });
       gsap.to('#hero .bg-content, #hero .scroll-cue', { opacity: 0.15, filter: 'blur(4px)', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 } });
 
       buildJourney();
@@ -249,82 +260,87 @@
     }
     initGalleryWall();
 
-    /* ================= SCRATCH CARD + GOLDEN BURST ================= */
-    const canvas = document.getElementById('scratch-canvas');
-    const ctx = canvas.getContext('2d');
-    const scratchHint = document.getElementById('scratch-hint');
-    function sizeCanvas() {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      canvas.width = rect.width; canvas.height = rect.height;
-      drawScratchSurface();
+    /* ================= GOLDEN DUST (hero, date reveal, closing) ================= */
+    function makeDust(host, n) {
+      if (!host || !animate) return;
+      const box = document.createElement('div');
+      box.className = 'gold-dust'; box.setAttribute('aria-hidden', 'true');
+      for (let i = 0; i < n; i++) {
+        const d = document.createElement('span'), s = rnd(2, 4.6);
+        d.className = 'dust';
+        d.style.cssText = `left:${rnd(2, 98).toFixed(1)}%;width:${s.toFixed(1)}px;height:${s.toFixed(1)}px;--dx:${rnd(-40, 40).toFixed(0)}px;animation-duration:${rnd(16, 28).toFixed(1)}s;animation-delay:-${rnd(0, 26).toFixed(1)}s`;
+        box.appendChild(d);
+      }
+      host.insertBefore(box, host.querySelector('.bg-content'));
+      if ('IntersectionObserver' in window) new IntersectionObserver((es) => box.classList.toggle('is-paused', !es[0].isIntersecting)).observe(host);
     }
-    function drawScratchSurface() {
-      const g = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      g.addColorStop(0, '#E9D6A6'); g.addColorStop(0.5, '#C9A55C'); g.addColorStop(1, '#B8934A');
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(255,255,255,0.85)';
-      ctx.font = '500 15px Poppins, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('✦ SCRATCH HERE ✦', canvas.width / 2, canvas.height / 2 - 10);
-      ctx.font = '400 12px Poppins, sans-serif';
-      ctx.fillText('to reveal our wedding date', canvas.width / 2, canvas.height / 2 + 14);
-    }
-    sizeCanvas();
-    window.addEventListener('resize', sizeCanvas);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!revealed && !scratching) sizeCanvas(); });
+    makeDust(document.getElementById('hero'), isMobile ? 5 : 9);
 
-    let scratching = false, revealed = false;
-    function getPos(e) {
-      const rect = canvas.getBoundingClientRect();
-      const cx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-      const cy = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
-      return { x: cx, y: cy };
-    }
-    function scratchAt(x, y) {
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.beginPath();
-      ctx.arc(x, y, 32, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    function goldenBurst() {
-      const wrap = document.querySelector('.scratch-wrap');
-      const rect = wrap.getBoundingClientRect();
-      for (let i = 0; i < 26; i++) {
-        const p = document.createElement('div');
-        p.className = 'burst-particle';
-        p.style.left = rect.left + rect.width / 2 + 'px';
-        p.style.top = rect.top + rect.height / 2 + 'px';
-        document.body.appendChild(p);
-        const angle = Math.random() * Math.PI * 2;
-        const dist = 80 + Math.random() * 160;
-        gsap.to(p, {
-          x: Math.cos(angle) * dist, y: Math.sin(angle) * dist,
-          opacity: 0, scale: 0.3, duration: 1 + Math.random() * 0.6, ease: 'power2.out',
-          onComplete: () => p.remove()
-        });
+    /* ================= GOLDEN INVITATION UNFOLD (date reveal) ================= */
+    (function initInvite() {
+      const stage = document.getElementById('invite-stage');
+      if (!stage) return;
+      const card = document.getElementById('invite-card'), btn = document.getElementById('invite-open'), inner = document.getElementById('invite-date');
+      const colours = ['#ffffff', '#f8dcdf', '#f3c9cf', '#f1d68f', '#fbe9b7'];
+      let opened = false;
+
+      function petals() {
+        const n = isMobile ? 9 : 16;
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement('span');
+          p.className = 'inv-petal'; p.style.setProperty('--c', colours[i % colours.length]);
+          stage.appendChild(p);
+          const dur = rnd(3.6, 5.6), delay = 0.55 + rnd(0, 1.1), dx = rnd(-170, 170);
+          gsap.fromTo(p, { x: dx * 0.25, y: -10, rotation: rnd(0, 360), scale: rnd(0.7, 1.15) },
+            { x: dx, y: rnd(200, 380), rotation: '+=' + rnd(160, 420), duration: dur, delay, ease: 'sine.inOut' });
+          gsap.timeline({ delay, onComplete: () => p.remove() })
+            .to(p, { opacity: 0.95, duration: 0.5 })
+            .to(p, { opacity: 0, duration: 1.2 }, dur - 1.2);
+        }
       }
-    }
-    function checkRevealed() {
-      if (revealed) return;
-      const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-      let cleared = 0, total = data.length / 4;
-      for (let i = 3; i < data.length; i += 4 * 20) { if (data[i] < 40) cleared++; }
-      const pct = cleared / (total / 20);
-      if (pct > 0.5) {
-        revealed = true;
-        scratchHint.classList.add('done');
-        goldenBurst();
-        gsap.to(canvas, { opacity: 0, duration: 0.8, onComplete: () => canvas.style.display = 'none' });
+      function openInvite() {
+        if (opened) return; opened = true;
+        card.classList.add('is-open'); stage.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        if (animate) {
+          gsap.from(inner.querySelectorAll('.cover-orn, .inv-kicker, .rdate, .inv-line, .rday'),
+            { opacity: 0, y: 14, duration: 0.9, ease: 'power2.out', stagger: 0.12, delay: 0.75 });
+          petals();
+        }
+        setTimeout(() => {      /* hand focus to the revealed date so keyboard & screen-reader users land on it */
+          try { inner.focus({ preventScroll: true }); } catch (e) { }
+          btn.tabIndex = -1; btn.setAttribute('aria-hidden', 'true');
+        }, animate ? 1700 : 120);
       }
+      btn.addEventListener('click', openInvite);   /* a native <button>: Enter and Space work too */
+    })();
+
+    /* ================= LOVE STORY TIMELINE ================= */
+    function initStory() {
+      if (!animate) { const h = document.getElementById('story-head'); if (h) h.style.display = 'none'; return; }
+      const wrap = document.getElementById('story-wrap'), fill = document.getElementById('story-fill'), head = document.getElementById('story-head');
+      if (!wrap || !fill) return;
+      const lineH = () => fill.offsetHeight;
+      gsap.fromTo(fill, { scaleY: 0 }, {
+        scaleY: 1, ease: 'none',
+        scrollTrigger: { trigger: wrap, start: 'top 62%', end: 'bottom 58%', scrub: true, onUpdate: (self) => { head.style.transform = `translate3d(0, ${(self.progress * lineH()).toFixed(1)}px, 0)`; } }
+      });
+      const wide = window.innerWidth >= 768;
+      $$('.chapter').forEach((ch, i) => {
+        const text = $('.ch-text', ch), media = $('.ch-media', ch), dir = i % 2 === 0 ? -1 : 1;
+        gsap.from(text, { opacity: 0, x: wide ? dir * 48 : 0, y: wide ? 0 : 26, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: ch, start: 'top 78%', once: true } });
+        gsap.from(media, { opacity: 0, x: wide ? -dir * 48 : 0, y: wide ? 24 : 30, scale: 0.97, duration: 1.25, delay: 0.15, ease: 'power3.out', clearProps: 'transform', scrollTrigger: { trigger: ch, start: 'top 76%', once: true } });
+        ScrollTrigger.create({ trigger: ch, start: 'top 62%', onEnter: () => ch.classList.add('is-lit'), onLeaveBack: () => ch.classList.remove('is-lit') });
+      });
     }
-    canvas.addEventListener('mousedown', e => { scratching = true; const p = getPos(e); scratchAt(p.x, p.y); });
-    canvas.addEventListener('mouseup', () => scratching = false);
-    canvas.addEventListener('mouseleave', () => scratching = false);
-    canvas.addEventListener('mousemove', e => { if (scratching) { const p = getPos(e); scratchAt(p.x, p.y); checkRevealed(); } });
-    canvas.addEventListener('touchstart', e => { scratching = true; const p = getPos(e); scratchAt(p.x, p.y); }, { passive: true });
-    canvas.addEventListener('touchend', () => scratching = false);
-    canvas.addEventListener('touchmove', e => { if (scratching) { const p = getPos(e); scratchAt(p.x, p.y); checkRevealed(); } }, { passive: true });
+    /* lamps, garlands and florals drift very slowly against the scroll */
+    function initDecorParallax() {
+      if (!animate || !hasFinePointer) return;     /* phones & tablets: static decor keeps scrolling smooth */
+      $$('.deco-lamp[data-depth]').forEach((el) => {
+        const d = parseFloat(el.dataset.depth) || 0.3;
+        gsap.fromTo(el, { y: -d * 30 }, { y: d * 30, ease: 'none', scrollTrigger: { trigger: el.closest('section'), start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
+    }
 
     /* ================= COUNTDOWN ================= */
     const weddingDate = new Date('2027-01-31T10:15:00+05:30').getTime();
@@ -438,8 +454,13 @@
     };
     /* couple photographs: love-story polaroids first, then the gallery wall (document order) */
     const photoEls = $$('[data-lb]');
-    const photoList = photoEls.map((el) => { const im = $('img', el); return { src: im.dataset.full || im.currentSrc || im.src, alt: im.alt }; });
-    photoEls.forEach((el, i) => onActivate(el, () => openLightbox(photoList, i, false)));
+    const photoList = [], photoIdx = [], seenSrc = new Map();
+    photoEls.forEach((el) => {
+      const im = $('img', el), src = im.dataset.full || im.currentSrc || im.src;
+      if (!seenSrc.has(src)) { seenSrc.set(src, photoList.length); photoList.push({ src, alt: im.alt }); }
+      photoIdx.push(seenSrc.get(src));
+    });
+    photoEls.forEach((el, i) => onActivate(el, () => openLightbox(photoList, photoIdx[i], false)));
 
     /* ================= EVENTS: ANIMATED GOLD DOTTED JOURNEY LINE (SVG + GSAP ScrollTrigger) ================= */
     const SVGNS = 'http://www.w3.org/2000/svg';
@@ -589,85 +610,6 @@
     window.addEventListener('load', rebuildJourneySoon);
     $$('.event-art img', J).forEach((im) => { if (!im.complete) im.addEventListener('load', rebuildJourneySoon, { once: true }); });
     buildJourney();
-
-    /* ================= RSVP FORM ================= */
-    (function initRSVP() {
-      const form = document.getElementById('rsvp-form');
-      const btn = document.getElementById('rsvp-btn');
-      const status = document.getElementById('rsvp-status');
-      const eventsField = document.getElementById('events-field');
-      const attendBtns = $$('.attend-toggle button[data-val]', form);
-      const eventBtns = $$('button[data-event]', form);
-      let attendValue = 'yes', submitting = false;
-
-      const setErr = (name, msg) => {
-        const el = $(`.err[data-for="${name}"]`, form); if (el) el.textContent = msg || '';
-        const inp = form.elements[name];
-        if (inp && inp.nodeType === 1) { msg ? inp.setAttribute('aria-invalid', 'true') : inp.removeAttribute('aria-invalid'); }
-      };
-      const say = (msg, cls) => { status.className = 'rsvp-status ' + (cls || ''); status.textContent = msg; };
-
-      attendBtns.forEach((b) => b.addEventListener('click', () => {
-        attendBtns.forEach((x) => { x.classList.remove('active'); x.setAttribute('aria-pressed', 'false'); });
-        b.classList.add('active'); b.setAttribute('aria-pressed', 'true');
-        attendValue = b.dataset.val;
-        const no = attendValue === 'no';
-        eventsField.style.display = no ? 'none' : '';
-        if (no) { eventBtns.forEach((x) => { x.classList.remove('active'); x.setAttribute('aria-pressed', 'false'); }); setErr('events', ''); }
-      }));
-      eventBtns.forEach((b) => b.addEventListener('click', () => {
-        const on = !b.classList.contains('active');
-        b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on)); setErr('events', '');
-      }));
-      form.addEventListener('input', (e) => { if (e.target.name) setErr(e.target.name, ''); });
-
-      function validate() {
-        let ok = true, first = null;
-        const bad = (n, m, focusEl) => { setErr(n, m); ok = false; if (!first) first = focusEl || form.elements[n]; };
-        const name = form.elements.name.value.trim(), phone = form.elements.phone.value.trim();
-        const guests = parseInt(form.elements.guests.value, 10);
-        if (name.length < 2) bad('name', 'Please enter your name.');
-        const digits = phone.replace(/\D/g, '');
-        if (!/^[+\d][\d\s\-()]*$/.test(phone) || digits.length < 8 || digits.length > 15) bad('phone', 'Please enter a valid phone number.');
-        if (!Number.isInteger(guests) || guests < 1 || guests > 10) bad('guests', 'Guests must be between 1 and 10.');
-        if (attendValue === 'yes' && !eventBtns.some((b) => b.classList.contains('active'))) bad('events', 'Please choose at least one event.', eventBtns[0]);
-        if (first && first.focus) first.focus();
-        return ok;
-      }
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (submitting) return;
-        if (document.getElementById('r-website').value) return;            /* honeypot */
-        if (!validate()) { say('Please check the highlighted fields.', 'is-bad'); return; }
-        const endpoint = ((window.SITE_CONFIG || {}).RSVP_ENDPOINT || '').trim();
-        if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(endpoint)) {
-          say('Online RSVP is not switched on yet, so your response has not been sent. Please confirm your attendance with the family directly.', 'is-bad');
-          return;
-        }
-        const payload = {
-          submissionId: (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random().toString(16).slice(2)),
-          name: form.elements.name.value.trim(),
-          phone: form.elements.phone.value.trim(),
-          guests: form.elements.guests.value,
-          attending: attendValue,
-          events: eventBtns.filter((b) => b.classList.contains('active')).map((b) => b.dataset.event),
-          message: form.elements.message.value.trim()
-        };
-        submitting = true; btn.disabled = true; const label = btn.textContent; btn.textContent = 'Submitting…'; say('');
-        const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 20000);
-        try {
-          const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload), signal: ctl.signal });
-          const data = await res.json();
-          if (!res.ok || data.result !== 'success') throw new Error(data.error || 'Server error');
-          form.style.display = 'none';
-          document.getElementById('rsvp-success').classList.add('show');
-        } catch (err) {
-          say('Sorry, we could not send your RSVP. Please check your connection and try again.', 'is-bad');
-          btn.disabled = false; btn.textContent = label;
-        } finally { clearTimeout(to); submitting = false; }
-      });
-    })();
 
     if (reduceMotion) endIntro();   /* reduced-motion visitors go straight to the invitation */
 })();

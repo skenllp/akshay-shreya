@@ -28,7 +28,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='%23FFF9F0' stroke='%23B89558'%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(60 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(120 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(180 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(240 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.4' ry='9' transform='rotate(300 20 20)'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='3' fill='%23B89558'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js')</script>
-  <noscript><style>#intro-screen{display:none!important}#site{opacity:1!important}.hero-names .char,.photo-card{opacity:1!important;transform:none!important}</style></noscript>
+  <noscript><style>#intro-screen{display:none!important}#site{opacity:1!important}.hero-names .char,.g-item{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
 <body>
@@ -243,9 +243,8 @@
     </section>
 
     <!-- LOVE STORY -->
-    <!-- LOVE STORY -->
-    <section id="story" class="section cine">
-      <div class="deco" aria-hidden="true">
+    <section id="story" class="section cine" aria-labelledby="story-title">
+            <div class="deco" aria-hidden="true">
         <div class="deco-p deco-garland" data-depth=".08"><div class="sway"><svg viewBox="-20 -20 640 190"><use href="#deco-garland"/></svg></div></div>
         <div class="deco-p deco-corner deco-corner--tl" data-depth=".4"><div class="sway"><svg viewBox="0 0 190 190"><use href="#deco-corner"/></svg></div></div>
         <div class="deco-p deco-corner deco-corner--br" data-depth=".4"><div class="sway"><svg viewBox="0 0 190 190"><use href="#deco-corner"/></svg></div></div>
@@ -253,57 +252,65 @@
         <div class="deco-p deco-lamp deco-lamp--l" style="top:58%" data-depth="0.9"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
       </div>
       <div class="eyebrow">Their Journey</div>
-      <h2 style="font-size:clamp(32px,5vw,52px);color:var(--olive-dark);">Our Love Story</h2>
+      <h2 id="story-title" style="font-size:clamp(32px,5vw,52px);color:var(--olive-dark);">Our Love Story</h2>
       <p class="section-sub serif">Six Chapters, One Beautiful Journey</p>
       <div class="story-wrap" id="story-wrap">
         <div class="story-line" aria-hidden="true"><div class="story-line-fill" id="story-fill"></div><span class="story-head" id="story-head"></span></div>
         <ol class="story" id="story-list">
         <li class="chapter">
           <span class="ch-dot" aria-hidden="true"></span>
-          <div class="ch-text"><span class="ch-num">Chapter 01 <span class="ch-year">· 2002</span></span><h3 class="ch-title serif">The Beginning</h3><p class="ch-p">Some of the most beautiful stories begin without us even knowing. Ours began in 2002, when we first met. Two young hearts, unaware that this simple meeting would one day become the beginning of a lifetime together.</p></div>
-          <div class="ch-media"><div class="year-art" aria-hidden="true"><span class="year-num script">2002</span><span class="year-cap">when we first met</span></div></div>
-        </li>
-<li class="chapter">
-          <span class="ch-dot" aria-hidden="true"></span>
-          <div class="ch-text"><span class="ch-num">Chapter 02</span><h3 class="ch-title serif">A Beautiful Friendship</h3><p class="ch-p">What started as a simple connection slowly grew into a wonderful friendship. We became close friends, sharing endless conversations, laughter, little secrets, and countless memories.</p></div>
-          <div class="ch-media"><figure class="photo-frame" style="--ar:780/1040" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie">
-              <img src="assets/images/couple/couple-blue-fleece.webp" srcset="assets/images/couple/couple-blue-fleece-480.webp 480w, assets/images/couple/couple-blue-fleece.webp 780w" sizes="(max-width: 767px) 72vw, 300px" width="780" height="1040" alt="Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie" data-full="assets/images/couple/couple-blue-fleece.webp" loading="lazy" decoding="async">
+          <div class="ch-text"><span class="ch-num">Chapter 01 <span class="ch-year">· 2022</span></span><h3 class="ch-title serif">Where It All Began</h3><p class="ch-quote serif">&ldquo;Some beautiful stories begin unexpectedly.&rdquo;</p><p class="ch-p">In 2022, Akshay and Shreya met while pursuing their MBA together. What began as two students sharing classrooms, assignments, and everyday college moments slowly turned into a beautiful friendship.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:780/1040" data-lb="story" tabindex="0" role="button" aria-label="Open photo: Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall">
+              <img src="assets/images/couple/couple-campus-hall-480.webp" srcset="assets/images/couple/couple-campus-hall-480.webp 480w, assets/images/couple/couple-campus-hall.webp 780w" sizes="(max-width: 767px) 72vw, 300px" width="780" height="1040" loading="lazy" decoding="async" alt="Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall" data-full="assets/images/couple/couple-campus-hall.webp">
             </figure></div>
         </li>
-<li class="chapter">
+        <li class="chapter">
           <span class="ch-dot" aria-hidden="true"></span>
-          <div class="ch-text"><span class="ch-num">Chapter 03</span><h3 class="ch-title serif">Our College Days</h3><p class="ch-p">College brought us even closer. We studied together, supported each other, celebrated the little moments, and created memories that became some of the most precious chapters of our lives.</p></div>
-          <div class="ch-media"><figure class="photo-frame" style="--ar:780/1040" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall">
-              <img src="assets/images/couple/couple-campus-hall.webp" srcset="assets/images/couple/couple-campus-hall-480.webp 480w, assets/images/couple/couple-campus-hall.webp 780w" sizes="(max-width: 767px) 72vw, 300px" width="780" height="1040" alt="Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall" data-full="assets/images/couple/couple-campus-hall.webp" loading="lazy" decoding="async">
+          <div class="ch-text"><span class="ch-num">Chapter 02 <span class="ch-year">· 2022–2024</span></span><h3 class="ch-title serif">The Beautiful College Days</h3><p class="ch-quote serif">&ldquo;Two years, countless memories.&rdquo;</p><p class="ch-p">Between lectures, conversations, laughter, and unforgettable college experiences, their friendship grew stronger. Those two years gave them more than an education &mdash; they gave them a connection that would become an important part of their lives.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:780/1040" data-lb="story" tabindex="0" role="button" aria-label="Open photo: Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie">
+              <img src="assets/images/couple/couple-blue-fleece-480.webp" srcset="assets/images/couple/couple-blue-fleece-480.webp 480w, assets/images/couple/couple-blue-fleece.webp 780w" sizes="(max-width: 767px) 72vw, 300px" width="780" height="1040" loading="lazy" decoding="async" alt="Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie" data-full="assets/images/couple/couple-blue-fleece.webp">
             </figure></div>
         </li>
-<li class="chapter">
+        <li class="chapter">
           <span class="ch-dot" aria-hidden="true"></span>
-          <div class="ch-text"><span class="ch-num">Chapter 04</span><h3 class="ch-title serif">More Than Friends</h3><p class="ch-p">Somewhere between our everyday conversations and the moments we spent together, friendship quietly began turning into something more. What once felt like an ordinary friendship became a bond neither of us could imagine living without.</p></div>
-          <div class="ch-media"><figure class="photo-frame" style="--ar:585/1040;--w:250px" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop">
-              <img src="assets/images/couple/couple-green-forest.webp" srcset="assets/images/couple/couple-green-forest-480.webp 480w, assets/images/couple/couple-green-forest.webp 585w" sizes="(max-width: 767px) 72vw, 300px" width="585" height="1040" alt="Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop" data-full="assets/images/couple/couple-green-forest.webp" loading="lazy" decoding="async">
+          <div class="ch-text"><span class="ch-num">Chapter 03 <span class="ch-year">· 2024</span></span><h3 class="ch-title serif">Different Cities, One Connection</h3><p class="ch-quote serif">&ldquo;Life took them in different directions.&rdquo;</p><p class="ch-p">After completing their MBA, Shreya moved to Chennai for work, while Akshay began his career in Kerala. Their college days had ended, and a new chapter of responsibility, ambition, and distance had begun.</p></div>
+          <div class="ch-media"><div class="route" role="img" aria-label="A dotted line joins Kerala, where Akshay began his career, and Chennai, where Shreya moved for work">
+              <svg viewBox="0 0 300 150" aria-hidden="true" focusable="false">
+                <path class="route-base" d="M52 112 C 112 112, 128 40, 248 38"/>
+                <path class="route-line" d="M52 112 C 112 112, 128 40, 248 38" pathLength="1"/>
+                <circle class="route-dot route-dot--a" cx="52" cy="112" r="5.5"/>
+                <circle class="route-dot route-dot--b" cx="248" cy="38" r="5.5"/>
+                <text class="route-city" x="52" y="138" text-anchor="middle">Kerala</text>
+                <text class="route-city" x="248" y="22" text-anchor="middle">Chennai</text>
+              </svg>
+              <p class="route-cap">Akshay in Kerala <span aria-hidden="true">·</span> Shreya in Chennai</p>
+            </div></div>
+        </li>
+        <li class="chapter">
+          <span class="ch-dot" aria-hidden="true"></span>
+          <div class="ch-text"><span class="ch-num">Chapter 04 <span class="ch-year">· 2024–2025</span></span><h3 class="ch-title serif">Beyond the Distance</h3><p class="ch-quote serif">&ldquo;Some bonds only grow stronger with time.&rdquo;</p><p class="ch-p">For the next year, they followed their professional journeys in different cities. Despite the physical distance and changes in their everyday lives, the connection they had built during college remained meaningful.</p></div>
+          <div class="ch-media"><div class="year-art" aria-hidden="true"><span class="year-num script">2024&ndash;25</span><span class="year-cap">a year, two cities</span></div></div>
+        </li>
+        <li class="chapter">
+          <span class="ch-dot" aria-hidden="true"></span>
+          <div class="ch-text"><span class="ch-num">Chapter 05 <span class="ch-year">· 2025</span></span><h3 class="ch-title serif">Choosing Each Other</h3><p class="ch-quote serif">&ldquo;Some decisions are written by the heart.&rdquo;</p><p class="ch-p">After a year of building their separate careers, Akshay and Shreya made one of the most meaningful decisions of their lives &mdash; to walk forward together. Their friendship had grown into a relationship they wanted to cherish for a lifetime.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:585/1040;--w:250px" data-lb="story" tabindex="0" role="button" aria-label="Open photo: Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop">
+              <img src="assets/images/couple/couple-green-forest-480.webp" srcset="assets/images/couple/couple-green-forest-480.webp 480w, assets/images/couple/couple-green-forest.webp 585w" sizes="(max-width: 767px) 72vw, 300px" width="585" height="1040" loading="lazy" decoding="async" alt="Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop" data-full="assets/images/couple/couple-green-forest.webp">
             </figure></div>
         </li>
-<li class="chapter">
+        <li class="chapter">
           <span class="ch-dot" aria-hidden="true"></span>
-          <div class="ch-text"><span class="ch-num">Chapter 05</span><h3 class="ch-title serif">The Proposal</h3><p class="ch-p">And then came the moment that changed everything. After years of friendship and unforgettable memories, he finally gathered the courage to tell her what his heart had been feeling. He proposed, opening the door to a beautiful new chapter.</p></div>
-          <div class="ch-media"><figure class="photo-frame" style="--ar:1066/1599;--w:260px" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay kneels in front of a glowing heart of red roses, holding Shreya’s hand as he proposes">
-              <img src="assets/images/couple/proposal-800.webp" srcset="assets/images/couple/proposal-480.webp 480w, assets/images/couple/proposal-800.webp 800w, assets/images/couple/proposal.webp 1066w" sizes="(max-width: 767px) 72vw, 300px" width="1066" height="1599" alt="Akshay kneels in front of a glowing heart of red roses, holding Shreya’s hand as he proposes" data-full="assets/images/couple/proposal.webp" loading="lazy" decoding="async">
-            </figure></div>
-        </li>
-<li class="chapter">
-          <span class="ch-dot" aria-hidden="true"></span>
-          <div class="ch-text"><span class="ch-num">Chapter 06</span><h3 class="ch-title serif">Our Forever</h3><p class="ch-p">From the day we first met in 2002 to the beautiful journey that followed, every memory has brought us closer to this moment. Now, surrounded by love and blessings, we are ready to begin our forever.</p></div>
-          <div class="ch-media"><figure class="photo-frame" style="--ar:1200/1801;--w:260px" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a pink and gold outfit and Akshay in a light green kurta stand on either side of a carved wooden pillar, smiling at each other">
-              <img src="assets/images/couple/couple-pillar-800.webp" srcset="assets/images/couple/couple-pillar-480.webp 480w, assets/images/couple/couple-pillar-800.webp 800w, assets/images/couple/couple-pillar.webp 1200w" sizes="(max-width: 767px) 72vw, 300px" width="1200" height="1801" alt="Shreya in a pink and gold outfit and Akshay in a light green kurta stand on either side of a carved wooden pillar, smiling at each other" data-full="assets/images/couple/couple-pillar.webp" loading="lazy" decoding="async">
+          <div class="ch-text"><span class="ch-num">Chapter 06 <span class="ch-year">· Our Forever</span></span><h3 class="ch-title serif">A New Beginning</h3><p class="ch-quote serif">&ldquo;From MBA classmates to forever partners.&rdquo;</p><p class="ch-p">What started in a classroom in 2022 has become a beautiful journey towards forever. Through friendship, memories, different cities, and important life decisions, Akshay and Shreya are now ready to begin their next chapter together.</p></div>
+          <div class="ch-media"><figure class="photo-frame" style="--ar:1200/1801;--w:260px" data-lb="story" tabindex="0" role="button" aria-label="Open photo: Shreya in a pink and gold outfit and Akshay in a light green kurta stand on either side of a carved wooden pillar, smiling at each other">
+              <img src="assets/images/couple/couple-pillar-800.webp" srcset="assets/images/couple/couple-pillar-480.webp 480w, assets/images/couple/couple-pillar-800.webp 800w, assets/images/couple/couple-pillar.webp 1200w" sizes="(max-width: 767px) 72vw, 300px" width="1200" height="1801" loading="lazy" decoding="async" alt="Shreya in a pink and gold outfit and Akshay in a light green kurta stand on either side of a carved wooden pillar, smiling at each other" data-full="assets/images/couple/couple-pillar.webp">
             </figure></div>
         </li>
         </ol>
       </div>
     </section>
 
-        <!-- GALLERY -->
-    <section id="gallery" class="section cine" style="min-height:auto;padding-bottom:110px;">
+    <!-- GALLERY -->
+    <section id="gallery" class="section cine" aria-labelledby="gallery-title">
       <div class="deco" aria-hidden="true">
         <div class="deco-p deco-garland" data-depth=".08"><div class="sway"><svg viewBox="-20 -20 640 190"><use href="#deco-garland"/></svg></div></div>
         <div class="deco-p deco-lamp deco-lamp--l" style="top:22%" data-depth=".8"><svg viewBox="0 0 80 160"><use href="#deco-lamp"/></svg></div>
@@ -311,125 +318,44 @@
         <div class="deco-p deco-corner deco-corner--br" data-depth=".4"><div class="sway"><svg viewBox="0 0 190 190"><use href="#deco-corner"/></svg></div></div>
       </div>
       <div class="gallery-rays" aria-hidden="true"></div>
-      <div class="bg-content" style="position:relative;z-index:2;width:100%;">
+      <div class="bg-content gallery-inner">
         <div class="eyebrow">Moments</div>
-        <h2 style="font-size:clamp(30px,4.5vw,48px);color:var(--olive-dark);">Photo Gallery</h2>
+        <h2 id="gallery-title" style="font-size:clamp(32px,5vw,52px);color:var(--olive-dark);">Our Moments</h2>
+        <p class="section-sub serif">A collection of memories, a lifetime of love.</p>
         <div class="divider"></div>
-        <p style="max-width:480px;margin-inline:auto;color:var(--ink-soft);font-size:14px;margin-top:-10px;">A few
-          cherished frames of Akshay &amp; Shreya.</p>
 
-        <div class="photo-wall-stage">
-          <div class="photo-wall__fx" aria-hidden="true">
-            <span class="photo-decor photo-decor--spark a"></span>
-            <span class="photo-decor photo-decor--spark b"></span>
-            <span class="photo-decor photo-decor--petal d"></span>
-            <span class="photo-decor photo-decor--dot f"></span>
-            <span class="photo-decor photo-decor--ray h"></span>
+        <div class="gallery" id="gallery-grid" aria-label="Photographs of Akshay and Shreya together">
+          <div class="g-row g-row--a">
+          <figure class="g-item" style="--ar:.667;--i:0" data-lb="gallery" tabindex="0" role="button" aria-label="Open photo: Akshay in a navy kurta and Shreya in a mustard outfit stand side by side, smiling, in a bright hall">
+            <div class="g-media"><img src="assets/images/couple/closing-couple-800.webp" srcset="assets/images/couple/closing-couple-480.webp 480w, assets/images/couple/closing-couple-800.webp 800w, assets/images/couple/closing-couple.webp 1066w" sizes="(max-width: 767px) 46vw, 360px" width="1066" height="1599" loading="lazy" decoding="async" alt="Akshay in a navy kurta and Shreya in a mustard outfit stand side by side, smiling, in a bright hall" data-full="assets/images/couple/closing-couple.webp"></div>
+            <span class="g-zoom" aria-hidden="true">✦</span>
+          </figure>
+          <figure class="g-item g-item--wide" style="--ar:1;--i:1" data-lb="gallery" tabindex="0" role="button" aria-label="Open photo: Akshay in a white shirt and Shreya in a maroon outfit laughing as they look at each other among sunlit leaves">
+            <div class="g-media"><img src="assets/images/couple/romantic-couple-800.webp" srcset="assets/images/couple/romantic-couple-480.webp 480w, assets/images/couple/romantic-couple-800.webp 800w, assets/images/couple/romantic-couple.webp 1200w" sizes="(max-width: 767px) 46vw, 360px" width="1200" height="1200" loading="lazy" decoding="async" alt="Akshay in a white shirt and Shreya in a maroon outfit laughing as they look at each other among sunlit leaves" data-full="assets/images/couple/romantic-couple.webp"></div>
+            <span class="g-zoom" aria-hidden="true">✦</span>
+          </figure>
+          <figure class="g-item" style="--ar:.667;--i:2" data-lb="gallery" tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya touch foreheads and smile in an embrace under a palm tree at night">
+            <div class="g-media"><img src="assets/images/couple/memory-06-800.webp" srcset="assets/images/couple/memory-06-480.webp 480w, assets/images/couple/memory-06-800.webp 800w, assets/images/couple/memory-06.webp 1066w" sizes="(max-width: 767px) 46vw, 360px" width="1066" height="1599" loading="lazy" decoding="async" alt="Akshay and Shreya touch foreheads and smile in an embrace under a palm tree at night" data-full="assets/images/couple/memory-06.webp"></div>
+            <span class="g-zoom" aria-hidden="true">✦</span>
+          </figure>
           </div>
-
-          <div class="photo-wall" id="photoWall" aria-label="Photographs of Akshay and Shreya">
-            <figure class="photo-card photo-card--md photo-tile" data-enter="left" data-speed="-0.05" style="--rot:2.4deg;--nudge-y:-8px;--drift-delay:1.0s;" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/couple-campus-hall.webp" srcset="assets/images/couple/couple-campus-hall-480.webp 480w, assets/images/couple/couple-campus-hall.webp 780w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="780" height="1040" alt="Shreya in a white embroidered kurta with a black dupatta and Akshay in a checked shirt smile in a selfie, both wearing yellow lanyards, in a bright hall" data-full="assets/images/couple/couple-campus-hall.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--sm photo-tile" data-enter="up" data-speed="0.04" style="--rot:-1.8deg;--nudge-y:10px;--drift-delay:1s;" data-lb tabindex="0" role="button" aria-label="Open photo: Portrait of Akshay smiling in a light green embroidered kurta, one fist raised in joy">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/groom-akshay-800.webp" srcset="assets/images/couple/groom-akshay-480.webp 480w, assets/images/couple/groom-akshay-800.webp 800w, assets/images/couple/groom-akshay.webp 853w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="853" height="1280" alt="Portrait of Akshay smiling in a light green embroidered kurta, one fist raised in joy" data-full="assets/images/couple/groom-akshay.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--lg photo-tile" data-enter="right" data-speed="-0.05" style="--rot:3.1deg;--nudge-y:-12px;--drift-delay:1.5s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay in a navy kurta and Shreya in a mustard outfit laughing together in a bright hall">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/closing-couple-800.webp" srcset="assets/images/couple/closing-couple-480.webp 480w, assets/images/couple/closing-couple-800.webp 800w, assets/images/couple/closing-couple.webp 1066w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1066" height="1599" alt="Akshay in a navy kurta and Shreya in a mustard outfit laughing together in a bright hall" data-full="assets/images/couple/closing-couple.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--md photo-tile" data-enter="left" data-speed="0.06" style="--rot:-2.6deg;--nudge-y:8px;--drift-delay:2s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay in a white shirt laughs while Shreya leans on a black iron gate, both in the sunshine">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/outdoor-couple-800.webp" srcset="assets/images/couple/outdoor-couple-480.webp 480w, assets/images/couple/outdoor-couple-800.webp 800w, assets/images/couple/outdoor-couple.webp 960w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="960" height="1280" alt="Akshay in a white shirt laughs while Shreya leans on a black iron gate, both in the sunshine" data-full="assets/images/couple/outdoor-couple.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--lg photo-tile" data-enter="up" data-speed="0.04" style="--rot:-2.2deg;--nudge-y:8px;--drift-delay:0.4s;" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/couple-blue-fleece.webp" srcset="assets/images/couple/couple-blue-fleece-480.webp 480w, assets/images/couple/couple-blue-fleece.webp 780w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="780" height="1040" alt="Shreya in a blue floral top with a yellow lanyard and Akshay in a light-blue fleece jacket smile together in a selfie" data-full="assets/images/couple/couple-blue-fleece.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--lg photo-tile" data-enter="left" data-speed="0.05" style="--rot:-3.6deg;--nudge-y:12px;--drift-delay:0.8s;" data-lb tabindex="0" role="button" aria-label="Open photo: Portrait of Shreya smiling in a pink embellished outfit with a maang tikka, green kundan necklace and mehndi on her hands">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/bride-shreya-800.webp" srcset="assets/images/couple/bride-shreya-480.webp 480w, assets/images/couple/bride-shreya-800.webp 800w, assets/images/couple/bride-shreya.webp 1200w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1200" height="1801" alt="Portrait of Shreya smiling in a pink embellished outfit with a maang tikka, green kundan necklace and mehndi on her hands" data-full="assets/images/couple/bride-shreya.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--md photo-tile" data-enter="right" data-speed="-0.05" style="--rot:1.9deg;--nudge-y:-10px;--drift-delay:1.8s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya smiling in front of a red car, Akshay in white and Shreya in maroon">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/memory-05-800.webp" srcset="assets/images/couple/memory-05-480.webp 480w, assets/images/couple/memory-05-800.webp 800w, assets/images/couple/memory-05.webp 960w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="960" height="1280" alt="Akshay and Shreya smiling in front of a red car, Akshay in white and Shreya in maroon" data-full="assets/images/couple/memory-05.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--sm photo-tile" data-enter="up" data-speed="0.04" style="--rot:-2.4deg;--nudge-y:8px;--drift-delay:1.2s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya in matching brown outfits taking a mirror selfie">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/memory-02-800.webp" srcset="assets/images/couple/memory-02-480.webp 480w, assets/images/couple/memory-02-800.webp 800w, assets/images/couple/memory-02.webp 960w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="960" height="1280" alt="Akshay and Shreya in matching brown outfits taking a mirror selfie" data-full="assets/images/couple/memory-02.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--lg photo-tile" data-enter="left" data-speed="-0.05" style="--rot:3.3deg;--nudge-y:-14px;--drift-delay:2.2s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya touch foreheads and smile in an embrace under a palm tree at night">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/memory-06-800.webp" srcset="assets/images/couple/memory-06-480.webp 480w, assets/images/couple/memory-06-800.webp 800w, assets/images/couple/memory-06.webp 1066w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1066" height="1599" alt="Akshay and Shreya touch foreheads and smile in an embrace under a palm tree at night" data-full="assets/images/couple/memory-06.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--lg photo-tile" data-enter="right" data-speed="0.05" style="--rot:-2.8deg;--nudge-y:10px;--drift-delay:0.7s;" data-lb tabindex="0" role="button" aria-label="Open photo: Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/couple-green-forest.webp" srcset="assets/images/couple/couple-green-forest-480.webp 480w, assets/images/couple/couple-green-forest.webp 585w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="585" height="1040" alt="Shreya in a navy embroidered kurta and Akshay in a navy shirt smile for a selfie in front of a green forest backdrop" data-full="assets/images/couple/couple-green-forest.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--sm photo-tile" data-enter="left" data-speed="-0.04" style="--rot:2.7deg;--nudge-y:-8px;--drift-delay:1.1s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay in a light green embroidered kurta gently holds Shreya’s face as the two smile at each other, Shreya in a pink and gold outfit with green jewellery">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/hero-couple-800.webp" srcset="assets/images/couple/hero-couple-480.webp 480w, assets/images/couple/hero-couple-800.webp 800w, assets/images/couple/hero-couple.webp 1066w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1066" height="1599" alt="Akshay in a light green embroidered kurta gently holds Shreya’s face as the two smile at each other, Shreya in a pink and gold outfit with green jewellery" data-full="assets/images/couple/hero-couple.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-            <figure class="photo-card photo-card--sm photo-tile" data-enter="up" data-speed="-0.04" style="--rot:1.8deg;--nudge-y:-6px;--drift-delay:1.4s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya laughing in red helmets on a bike ride">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/memory-03-800.webp" srcset="assets/images/couple/memory-03-480.webp 480w, assets/images/couple/memory-03-800.webp 800w, assets/images/couple/memory-03.webp 1200w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1200" height="1599" alt="Akshay and Shreya laughing in red helmets on a bike ride" data-full="assets/images/couple/memory-03.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
-
-            <figure class="photo-card photo-card--md photo-tile" data-enter="left" data-speed="0.04" style="--rot:-1.9deg;--nudge-y:8px;--drift-delay:0.2s;" data-lb tabindex="0" role="button" aria-label="Open photo: Akshay in a white shirt and Shreya in a maroon outfit laughing as they look at each other among sunlit leaves">
-              <div class="photo-card__inner">
-                <div class="photo-card__paper">
-                  <img src="assets/images/couple/romantic-couple-800.webp" srcset="assets/images/couple/romantic-couple-480.webp 480w, assets/images/couple/romantic-couple-800.webp 800w, assets/images/couple/romantic-couple.webp 1200w" sizes="(max-width:640px) 46vw, (max-width:900px) 40vw, 300px" width="1200" height="1200" alt="Akshay in a white shirt and Shreya in a maroon outfit laughing as they look at each other among sunlit leaves" data-full="assets/images/couple/romantic-couple.webp" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </figure>
+          <div class="g-row g-row--b">
+          <figure class="g-item" style="--ar:.75;--i:3" data-lb="gallery" tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya smiling in front of a red car, Akshay in white and Shreya in maroon">
+            <div class="g-media"><img src="assets/images/couple/memory-05-800.webp" srcset="assets/images/couple/memory-05-480.webp 480w, assets/images/couple/memory-05-800.webp 800w, assets/images/couple/memory-05.webp 960w" sizes="(max-width: 767px) 46vw, 360px" width="960" height="1280" loading="lazy" decoding="async" alt="Akshay and Shreya smiling in front of a red car, Akshay in white and Shreya in maroon" data-full="assets/images/couple/memory-05.webp"></div>
+            <span class="g-zoom" aria-hidden="true">✦</span>
+          </figure>
+          <figure class="g-item" style="--ar:.75;--i:4" data-lb="gallery" tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya in matching brown outfits taking a mirror selfie">
+            <div class="g-media"><img src="assets/images/couple/memory-02-800.webp" srcset="assets/images/couple/memory-02-480.webp 480w, assets/images/couple/memory-02-800.webp 800w, assets/images/couple/memory-02.webp 960w" sizes="(max-width: 767px) 46vw, 360px" width="960" height="1280" loading="lazy" decoding="async" alt="Akshay and Shreya in matching brown outfits taking a mirror selfie" data-full="assets/images/couple/memory-02.webp"></div>
+            <span class="g-zoom" aria-hidden="true">✦</span>
+          </figure>
+          <figure class="g-item" style="--ar:.75;--i:5" data-lb="gallery" tabindex="0" role="button" aria-label="Open photo: Akshay in a white shirt laughs while Shreya leans on a black iron gate, both in the sunshine">
+            <div class="g-media"><img src="assets/images/couple/outdoor-couple-800.webp" srcset="assets/images/couple/outdoor-couple-480.webp 480w, assets/images/couple/outdoor-couple-800.webp 800w, assets/images/couple/outdoor-couple.webp 960w" sizes="(max-width: 767px) 46vw, 360px" width="960" height="1280" loading="lazy" decoding="async" alt="Akshay in a white shirt laughs while Shreya leans on a black iron gate, both in the sunshine" data-full="assets/images/couple/outdoor-couple.webp"></div>
+            <span class="g-zoom" aria-hidden="true">✦</span>
+          </figure>
+          <figure class="g-item" style="--ar:.75;--i:6" data-lb="gallery" tabindex="0" role="button" aria-label="Open photo: Akshay and Shreya laughing in red helmets on a bike ride">
+            <div class="g-media"><img src="assets/images/couple/memory-03-800.webp" srcset="assets/images/couple/memory-03-480.webp 480w, assets/images/couple/memory-03-800.webp 800w, assets/images/couple/memory-03.webp 1200w" sizes="(max-width: 767px) 46vw, 360px" width="1200" height="1599" loading="lazy" decoding="async" alt="Akshay and Shreya laughing in red helmets on a bike ride" data-full="assets/images/couple/memory-03.webp"></div>
+            <span class="g-zoom" aria-hidden="true">✦</span>
+          </figure>
           </div>
         </div>
       </div>
@@ -441,6 +367,7 @@
       <button id="lightbox-prev" type="button" aria-label="Previous">‹</button>
       <img id="lightbox-img" src="" alt="">
       <button id="lightbox-next" type="button" aria-label="Next">›</button>
+      <div id="lightbox-count" aria-live="polite"></div>
     </div>
 
     <!-- COUNTDOWN -->
@@ -535,6 +462,8 @@
         </svg>
         <div class="fnames script">Akshay &amp; Shreya</div>
         <div class="fdate">31 January 2027</div>
+        <p class="f-closing serif">From MBA classmates to forever partners.</p>
+        <button class="f-top" id="back-to-top" type="button" aria-label="Back to the top of the invitation"><span aria-hidden="true">↑</span> Back to top</button>
       </div>
     </section>
 

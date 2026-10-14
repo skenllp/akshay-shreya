@@ -185,78 +185,40 @@
       ScrollTrigger.refresh();
     }
 
-    /* ================= GALLERY PHOTO WALL — enter / drift / parallax / touch ================= */
+    /* ================= GALLERY — "Our Moments": staggered reveal + touch feedback ================= */
     function initGalleryWall() {
-      const wall = document.getElementById('photoWall');
-      if (!wall) return;
-      const cards = wall.querySelectorAll('.photo-card');
-      if (!cards.length) return;
+      const grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      const tiles = Array.from(grid.querySelectorAll('.g-item'));
+      if (!tiles.length) return;
 
-      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      /* stagger by position within the visible row, not by overall index */
+      grid.querySelectorAll('.g-row').forEach((row) => {
+        Array.from(row.querySelectorAll('.g-item')).forEach((t, i) => t.style.setProperty('--r', i));
+      });
 
-      function revealCard(card) {
-        if (card.classList.contains('is-in')) return;
-        card.classList.add('is-in');
-      }
-
-      if (reduceMotion || !('IntersectionObserver' in window)) {
-        cards.forEach(revealCard);
-      } else {
+      const reveal = (t) => t.classList.add('is-in');
+      if (!animate || !('IntersectionObserver' in window)) { tiles.forEach(reveal); }
+      else {
         const io = new IntersectionObserver((entries) => {
           entries.forEach((en) => {
             if (!en.isIntersecting) return;
-            revealCard(en.target);
+            reveal(en.target);
             io.unobserve(en.target);
+            /* once settled, drop the stagger delay so hover stays instant */
+            setTimeout(() => { en.target.style.transitionDelay = '0s'; }, 1800);
           });
-        }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
-        cards.forEach((card) => io.observe(card));
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+        tiles.forEach((t) => io.observe(t));
       }
 
-      /* touch bounce */
-      cards.forEach((card) => {
-        const clearTouch = () => card.classList.remove('is-touched');
-        card.addEventListener('pointerdown', (e) => {
+      tiles.forEach((t) => {
+        t.addEventListener('pointerdown', (e) => {
           if (e.pointerType === 'mouse') return;
-          card.classList.add('is-touched');
-          setTimeout(clearTouch, 560);
+          t.classList.add('is-touched');
+          setTimeout(() => t.classList.remove('is-touched'), 500);
         }, { passive: true });
       });
-
-      if (reduceMotion) return;
-
-      /* subtle scroll parallax, driven by gsap's ticker so it stays in sync with Lenis */
-      const speeds = [];
-      cards.forEach((card, i) => {
-        const raw = parseFloat(card.getAttribute('data-speed'));
-        speeds[i] = isNaN(raw) ? ((i % 2 === 0) ? 0.04 : -0.03) : raw;
-      });
-
-      let tickerActive = true;
-      function updateParallax() {
-        if (!tickerActive) return;
-        const vh = window.innerHeight || 1;
-        const mid = vh * 0.5;
-        for (let i = 0; i < cards.length; i++) {
-          const card = cards[i];
-          if (!card.classList.contains('is-in')) continue;
-          const rect = card.getBoundingClientRect();
-          if (rect.bottom < -100 || rect.top > vh + 100) continue;
-          let offset = (rect.top + rect.height * 0.5 - mid) * speeds[i];
-          if (offset > 15) offset = 15;
-          if (offset < -15) offset = -15;
-          card.style.setProperty('--parallax-y', offset.toFixed(1) + 'px');
-        }
-      }
-      gsap.ticker.add(updateParallax);
-
-      /* Pause parallax when gallery is out of view to save CPU */
-      const gallery = document.getElementById('gallery');
-      if (gallery) {
-        const galleryObserver = new IntersectionObserver((entries) => {
-          tickerActive = entries[0].isIntersecting;
-        }, { rootMargin: '200px' });
-        galleryObserver.observe(gallery);
-      }
     }
     initGalleryWall();
 
@@ -317,7 +279,11 @@
 
     /* ================= LOVE STORY TIMELINE ================= */
     function initStory() {
-      if (!animate) { const h = document.getElementById('story-head'); if (h) h.style.display = 'none'; return; }
+      if (!animate) {
+        const h = document.getElementById('story-head'); if (h) h.style.display = 'none';
+        $$('.chapter').forEach((ch) => ch.classList.add('is-lit'));
+        return;
+      }
       const wrap = document.getElementById('story-wrap'), fill = document.getElementById('story-fill'), head = document.getElementById('story-head');
       if (!wrap || !fill) return;
       const lineH = () => fill.offsetHeight;
@@ -328,10 +294,25 @@
       const wide = window.innerWidth >= 768;
       $$('.chapter').forEach((ch, i) => {
         const text = $('.ch-text', ch), media = $('.ch-media', ch), dir = i % 2 === 0 ? -1 : 1;
-        gsap.from(text, { opacity: 0, x: wide ? dir * 48 : 0, y: wide ? 0 : 26, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: ch, start: 'top 78%', once: true } });
-        gsap.from(media, { opacity: 0, x: wide ? -dir * 48 : 0, y: wide ? 24 : 30, scale: 0.97, duration: 1.25, delay: 0.15, ease: 'power3.out', clearProps: 'transform', scrollTrigger: { trigger: ch, start: 'top 76%', once: true } });
+        /* text arrives line by line: chapter label, title, quote, paragraph */
+        gsap.from(text.children, { opacity: 0, x: wide ? dir * 26 : 0, y: wide ? 10 : 22, duration: 1.05, stagger: 0.14, ease: 'power3.out', clearProps: 'transform,opacity',
+          scrollTrigger: { trigger: ch, start: 'top 80%', once: true } });
+        gsap.from(media, { opacity: 0, x: wide ? -dir * 40 : 0, y: wide ? 20 : 28, scale: 0.97, duration: 1.25, delay: 0.25, ease: 'power3.out', clearProps: 'transform',
+          scrollTrigger: { trigger: ch, start: 'top 78%', once: true } });
         ScrollTrigger.create({ trigger: ch, start: 'top 62%', onEnter: () => ch.classList.add('is-lit'), onLeaveBack: () => ch.classList.remove('is-lit') });
       });
+
+      /* 2024: the dotted Kerala – Chennai line is drawn as the chapter comes into view */
+      const route = $('.route');
+      if (route) {
+        const line = $('.route-line', route), dots = $$('.route-dot', route), cities = $$('.route-city', route), cap = $('.route-cap', route);
+        const tl = gsap.timeline({ scrollTrigger: { trigger: route, start: 'top 82%', once: true } });
+        tl.from(dots[0], { scale: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.out(2)' })
+          .fromTo(line, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut' }, '-=0.1')
+          .from(dots[1], { scale: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.out(2)' }, '-=0.35')
+          .from(cities, { opacity: 0, y: 6, duration: 0.7, stagger: 0.15, ease: 'power2.out' }, '-=1.4')
+          .from(cap, { opacity: 0, y: 8, duration: 0.8, ease: 'power2.out' }, '-=0.5');
+      }
     }
     /* lamps, garlands and florals drift very slowly against the scroll */
     function initDecorParallax() {
@@ -399,22 +380,33 @@
     });
 
 
-    /* ================= LIGHTBOX (event illustrations + couple photographs) ================= */
+    /* ================= LIGHTBOX (couple photographs) — swipe, keyboard, counter ================= */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxCount = document.getElementById('lightbox-count');
     let lbList = [], lightboxIndex = 0, lbReturnFocus = null;
-    function updateLightboxImage() {
-      const item = lbList[lightboxIndex];
-      lightboxImg.src = item.src;
-      lightboxImg.alt = item.alt;
+    function preloadAround() {
+      [1, -1].forEach((d) => { const it = lbList[(lightboxIndex + d + lbList.length) % lbList.length]; if (it) { const p = new Image(); p.src = it.src; } });
     }
-    function openLightbox(list, i, isArt) {
+    function updateLightboxImage(dir) {
+      const item = lbList[lightboxIndex];
+      lightboxCount.textContent = (lightboxIndex + 1) + ' / ' + lbList.length;
+      lightbox.style.setProperty('--dir', dir || 1);
+      const reveal = () => { lightboxImg.classList.remove('is-swap'); };
+      lightboxImg.classList.add('is-swap');
+      lightboxImg.onload = reveal; lightboxImg.onerror = reveal;
+      lightboxImg.alt = item.alt;
+      lightboxImg.src = item.src;
+      if (lightboxImg.complete) requestAnimationFrame(reveal);
+      preloadAround();
+    }
+    function openLightbox(list, i) {
       lbList = list; lightboxIndex = i;
       lbReturnFocus = document.activeElement;
       lightbox.classList.toggle('single', list.length < 2);
-      lightbox.classList.toggle('art', !!isArt);
-      updateLightboxImage();
+      lightbox.classList.remove('dragging');
+      updateLightboxImage(1);
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
       lenis.stop();
@@ -427,8 +419,8 @@
       lenis.start();
       if (lbReturnFocus && lbReturnFocus.focus) lbReturnFocus.focus();
     }
-    function lightboxNext() { lightboxIndex = (lightboxIndex + 1) % lbList.length; updateLightboxImage(); }
-    function lightboxPrev() { lightboxIndex = (lightboxIndex - 1 + lbList.length) % lbList.length; updateLightboxImage(); }
+    function lightboxNext() { if (lbList.length < 2) return; lightboxIndex = (lightboxIndex + 1) % lbList.length; updateLightboxImage(1); }
+    function lightboxPrev() { if (lbList.length < 2) return; lightboxIndex = (lightboxIndex - 1 + lbList.length) % lbList.length; updateLightboxImage(-1); }
     lightboxClose.addEventListener('click', closeLightbox);
     document.getElementById('lightbox-next').addEventListener('click', lightboxNext);
     document.getElementById('lightbox-prev').addEventListener('click', lightboxPrev);
@@ -436,31 +428,50 @@
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight' && lbList.length > 1) lightboxNext();
-      if (e.key === 'ArrowLeft' && lbList.length > 1) lightboxPrev();
+      if (e.key === 'ArrowRight') lightboxNext();
+      if (e.key === 'ArrowLeft') lightboxPrev();
     });
-    /* swipe */
-    let touchX = null;
-    lightbox.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    /* swipe: the photograph follows the finger; release past 50px to change, drag down to close */
+    let sx = null, sy = null, axis = null;
+    lightbox.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) { sx = null; return; }
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; axis = null;
+    }, { passive: true });
+    lightbox.addEventListener('touchmove', (e) => {
+      if (sx === null) return;
+      const dx = e.touches[0].clientX - sx, dy = e.touches[0].clientY - sy;
+      if (!axis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+      if (!axis) return;
+      lightbox.classList.add('dragging');
+      if (axis === 'x' && lbList.length > 1) lightboxImg.style.transform = `translateX(${(dx * 0.6).toFixed(0)}px)`;
+      else if (axis === 'y' && dy > 0) { lightboxImg.style.transform = `translateY(${(dy * 0.6).toFixed(0)}px)`; lightboxImg.style.opacity = String(Math.max(0.35, 1 - dy / 420)); }
+    }, { passive: true });
     lightbox.addEventListener('touchend', (e) => {
-      if (touchX === null || lbList.length < 2) return;
-      const dx = e.changedTouches[0].clientX - touchX; touchX = null;
-      if (Math.abs(dx) > 50) (dx < 0 ? lightboxNext : lightboxPrev)();
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      const a = axis; sx = sy = axis = null;
+      lightbox.classList.remove('dragging');
+      lightboxImg.style.transform = ''; lightboxImg.style.opacity = '';
+      if (a === 'x' && Math.abs(dx) > 50) (dx < 0 ? lightboxNext : lightboxPrev)();
+      else if (a === 'y' && dy > 90) closeLightbox();
     });
+    lightbox.addEventListener('touchcancel', () => { sx = sy = axis = null; lightbox.classList.remove('dragging'); lightboxImg.style.transform = ''; lightboxImg.style.opacity = ''; });
 
     const onActivate = (el, fn) => {
       el.addEventListener('click', fn);
       el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(); } });
     };
-    /* couple photographs: love-story polaroids first, then the gallery wall (document order) */
-    const photoEls = $$('[data-lb]');
-    const photoList = [], photoIdx = [], seenSrc = new Map();
-    photoEls.forEach((el) => {
-      const im = $('img', el), src = im.dataset.full || im.currentSrc || im.src;
-      if (!seenSrc.has(src)) { seenSrc.set(src, photoList.length); photoList.push({ src, alt: im.alt }); }
-      photoIdx.push(seenSrc.get(src));
+    /* each group opens its own set: the gallery swipes only through the gallery's photographs */
+    const groups = {};
+    $$('[data-lb]').forEach((el) => {
+      const key = el.dataset.lb || 'story', im = $('img', el), src = im.dataset.full || im.currentSrc || im.src;
+      const g = groups[key] || (groups[key] = { list: [], seen: new Map() });
+      if (!g.seen.has(src)) { g.seen.set(src, g.list.length); g.list.push({ src, alt: im.alt }); }
+      onActivate(el, () => openLightbox(g.list, g.seen.get(src)));
     });
-    photoEls.forEach((el, i) => onActivate(el, () => openLightbox(photoList, photoIdx[i], false)));
+
+    const topBtn = document.getElementById('back-to-top');
+    if (topBtn) topBtn.addEventListener('click', backToTop);
 
     /* ================= EVENTS: ANIMATED GOLD DOTTED JOURNEY LINE (SVG + GSAP ScrollTrigger) ================= */
     const SVGNS = 'http://www.w3.org/2000/svg';
